@@ -6,27 +6,26 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/07 15:12:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/07 14:51:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "wolf3d.h"
 #include "libft.h"
 
 # define HEIGHT 400
 # define WIDTH 400
-/*
-static char	**map_alloc(t_uint h, t_uint w)
+
+static char	**map_alloc(u_int h, u_int w)
 {
 	char	**map;
-	t_uint	i;
+	int		i;
 
 	i = -1;
 	map = NULL;
-	if (!(map = (char**)malloc(sizeof(char*) * (h + 1))))
+	if (!(map = (map)malloc(sizeof(*map) * (h + 1))))
 	{
 		ft_putendl("Error alloc map");
 		return (NULL);
@@ -42,47 +41,16 @@ static char	**map_alloc(t_uint h, t_uint w)
 	}
 	return (map);
 }
-*/
-static void	print_map(char map[][11], t_uint h)//, t_uint w)
-{
-	t_uint	i;
-//	t_uint	j;
-
-	i = 0;
-//	j = 0;
-	while (i < h)
-	{
-//		j = 0;
-//		while (j < w)
-//		{
-			ft_putendl(map[i]);
-//			j++;
-//		}
-		i++;
-	}
-}
 
 int		main(int ac, char **av)
 {
-//	char	**map;
-//	map = NULL;
-//	map = map_alloc(20, 20);
-	char	map[11][11] = { {"1111111111\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1111111111\0"},
-							{0}
-							};
+	char	**map;
+
+	map = NULL;
 	av = av;
-	print_map(map, 10);
-	//if (!map)
-//		return (-1);
+	map = map_alloc(20, 20);
+	if (!map)
+		return (-1);
 	if (ac)
 	{
 		ft_putendl("test");			

@@ -6,20 +6,29 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/07 13:42:37 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/07 17:43:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
+# define	CHAMPS	60
+
 typedef unsigned int	t_uint;
 
 typedef struct		s_pos
 {
-	int				x;
-	int				y;
+	t_uint				x;
+	t_uint				y;
 }					t_pos;
+
+typedef struct		s_ray
+{
+	t_uint			len;
+	t_pos			direction;
+	t_uint			cadrant; // intervalle trigo auquel l angle appartiens
+}					t_ray;
 
 /*
 ** s_cam		==> structure of camera

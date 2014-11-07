@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2014/11/07 13:25:43 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/11/07 15:11:33 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJS)
 	make -C libft/
 	$(CC) $(FLAGS) $(LIB42) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
 
-$(OBJS): 
+$(OBJS): $(SRCS) 
 	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) 
 
 clean:
