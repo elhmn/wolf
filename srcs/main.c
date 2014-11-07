@@ -6,33 +6,53 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/06 17:01:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/07 13:58:32 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <mlx.h>
+#include <stdio.h>
+#include "wolf3D.h"
+#include "libft.h"
 
 # define HEIGHT 400
 # define WIDTH 400
 
-int		main(void)
+static char	**map_alloc(u_int h, u_int w)
 {
-	void	*mlx;
-	void	*win;
+	char	**map;
+	int		i;
 
-	mlx = NULL;
-	win = NULL;
-	if (!(mlx = mlx_init()))
+	i = -1;
+	map = NULL;
+	if (!(map = (map)malloc(sizeof(*map) * (h + 1))))
 	{
-		printf("ERROR mlx\n");
-		return (-1);
+		ft_putendl("Error alloc map");
+		return (NULL);
 	}
-	if (!(win = mlx_new_window(mlx, WIDTH, HEIGHT, "42")))
+	map[h] = 0;
+	while (++i < h)
 	{
-		printf("ERROR win\n");
-		return (-1);
+		if (!(map[i] = ft_strnew(w)))
+		{
+			ft_putendl("Error alloc map[i]");
+			return (NULL);
+		}
 	}
-	mlx_loop(mlx);
+	return (map);
+}
+
+int		main(int ac, char **av)
+{
+	char	**map;
+
+	map = NULL;
+	av = av;
+	map = map_alloc(20, 20);
+
+	if (ac)
+	{
+			
+	}
 	return (0);
 }
