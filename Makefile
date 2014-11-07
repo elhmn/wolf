@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2014/11/06 17:06:00 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/11/07 13:25:43 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,22 +28,27 @@ LIB42 = -L /usr/X11/lib
 
 LIBHOME = -L ./
 
-LIBS = -lmlx -lX11 -lXext -lm
+LIBFT = -L ./libft/
+
+LIBS = -lmlx -lX11 -lXext -lm -lft
 
 INCLUDES = -I includes/
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(LIB42) -o $(NAME) $(OBJS) $(LIBS)
+	make -C libft/
+	$(CC) $(FLAGS) $(LIB42) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
 
 $(OBJS): 
-	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)  
+	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) 
 
 clean:
 	rm -rf $(OBJS)
+	make clean -C ./libft/
 
 fclean: clean
 	rm -rf $(NAME)
+	make fclean -C ./libft/
 
 re: fclean all
