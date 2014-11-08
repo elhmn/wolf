@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 19:46:09 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 22:42:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		main(int ac, char **av)
 	new_lay(&env, &bg_lay, 5000);
 	init_cam(&cam);
 	init_screen(&screen);
+	map[cam.pos.y / WALL_H][cam.pos.x / WALL_W] = CAM;
 	print_cam(&cam);
 	print_screen(&screen);
 	print_map(map, 10);

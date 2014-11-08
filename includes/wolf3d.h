@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 19:48:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 22:42:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <math.h>
 
-# define	CHAMPS		3.14 / 3.0
+# define	CHAMPS		M_PI / 3.0
 # define	WALL_H		64
 # define	WALL_W		64
 # define	START_DIR	 90
@@ -26,9 +26,9 @@ typedef unsigned int	t_uint;
 
 enum	e_obj
 {
-	VOID,
-	WALL,
-	CAM
+	VOID = 48,
+	WALL = 49,
+	CAM = 50
 };
 
 /*

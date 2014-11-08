@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 13:42:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/07 17:42:05 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 22:44:22 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 1 - Recuperer la map (OPT)
 2 - Generateur de map (OPT)
 3 - Placement aleatoire de la camera au lancement du programme
-4 - RAYTRACER																		... En cours
+4 - RAYTRACER																							... En cours
 
-	- Initialiser structures et variables								... En cours
-	- Boucle de mise a jour de structures et variable
+	- Initialiser structures et variables											 	DONE
+	- Boucle de mise a jour de structures et variable								... En cours
+			-calcul de la longueur du rayon						... En cours
 	- Affichage
