@@ -6,12 +6,14 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:47:31 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 17:56:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
+
+# include <math.h>
 
 # define	CHAMPS		60
 # define	WALL_H		64

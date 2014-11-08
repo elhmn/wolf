@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 17:40:16 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:47:04 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 18:06:52 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	new_lay(t_env *env, t_lay *lay, t_uint depht)
 
 void	init_cam(t_cam *cam)
 {
+	float	tan;
+
 	if (!cam)
 	{
 		if (!(cam = (t_cam*)malloc(sizeof(t_cam))))
@@ -53,4 +55,9 @@ void	init_cam(t_cam *cam)
 	}
 	cam->angle = CHAMPS;
 	cam->direction = START_DIR;
+	cam->pos.x = (WALL_W * 5) + (WALL_W / 2);
+	cam->pos.y = (WALL_H * 4) + (WALL_H / 2);
+	tan = (float)((float)sin(CHAMPS / 2) / (float)cos(CHAMPS / 2));
+	cam->dist_proj = (t_uint)((float)(WIDTH / 2) / tan);
+	cam->h_cam = WALL_H / 2;
 }
