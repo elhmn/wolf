@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 22:42:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 22:54:19 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct		s_wall
 }					t_wall;
 
 /*
-** init_wolf_var.c
+** init_var_01.c
 */
 
 void	new_lay(t_env *env, t_lay *lay, t_uint depht);
@@ -136,5 +136,16 @@ void	init_screen(t_screen *screen);
 
 void	print_cam(t_cam *cam);
 void	print_screen(t_screen *screen);
+
+/*
+** calcul de la longueur d'un rayon
+*/
+
+/*
+void	ray_len(s_cam *cam, t_ray *ray, t_wall wall)
+{
+		
+}
+*/
 
 #endif
