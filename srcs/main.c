@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/07 15:12:24 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 13:34:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define HEIGHT 400
 # define WIDTH 400
+
 /*
 static char	**map_alloc(t_uint h, t_uint w)
 {
@@ -42,7 +43,7 @@ static char	**map_alloc(t_uint h, t_uint w)
 	}
 	return (map);
 }
-*/
+`
 static void	print_map(char map[][11], t_uint h)//, t_uint w)
 {
 	t_uint	i;
@@ -86,6 +87,17 @@ int		main(int ac, char **av)
 	if (ac)
 	{
 		ft_putendl("test");			
+	}
+	return (0);
+}
+*/
+
+int		main(int ac, cahr **av)
+{
+	if (ac)
+	{
+		av = av;
+		ft_putendl("test");
 	}
 	return (0);
 }
