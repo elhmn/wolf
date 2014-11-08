@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:24:02 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 17:47:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,12 @@ static void	print_map(char map[][11], t_uint h)//, t_uint w)
 	}
 }
 
-static void	init_env(t_env *env)
-{
-	env->win = NULL;
-	env->mlx = NULL;
-
-	if (!(env->mlx = mlx_init()))
-		check_errors(MALLOC, "env->mlx", "main.c");
-	if (!(env->win = mlx_new_window(env->mlx, WIDTH, HEIGH, "wolf3d")))
-		check_errors(MALLOC, "env->win", "main.c");
-}
-
-static void close_mlx(t_env *env)
-{
-	mlx_destroy_window(env->mlx, env->win);	
-}
-
-void	new_lay(t_env *env, t_lay *lay, t_uint depht)
-{
-	if (!lay)
-		if (!(lay = (t_lay*)malloc(sizeof(lay))))
-			check_errors(MALLOC, "lay", "main.c");
-	if (lay && env && env->mlx)
-	{
-		if (!(lay->img = mlx_new_image(env->mlx, WIDTH, HEIGH)))
-			check_errors(NUL, "lay->img", "main.c");
-		lay->depht = depht;
-	}
-}
-
 int		main(int ac, char **av)
 {
 	t_env	env;
 	t_lay	bg_lay;
-	
+//	t_cam	cam;
+
 	/*** ONLY FOR TEST ***/
 	char	map[11][11] = { {"1111111111\0"},
 							{"1000000001\0"},

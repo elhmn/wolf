@@ -6,16 +6,19 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:23:04 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 17:47:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# define	CHAMPS	60
-# define	HEIGH	200
-# define	WIDTH	320
+# define	CHAMPS		60
+# define	WALL_H		64
+# define	WALL_W		64
+# define	START_DIR	 90
+# define	HEIGH		200
+# define	WIDTH		320
 
 typedef unsigned int	t_uint;
 
@@ -115,6 +118,14 @@ typedef struct		s_wall
 	t_uint			color;
 }					t_wall;
 
+/*
+** init_wolf_var.c
+*/
+
 void	new_lay(t_env *env, t_lay *lay, t_uint depht);
+void	init_cam(t_cam *cam);
+void	close_mlx(t_env *env);
+void	init_cam(t_cam *cam);
+void	init_env(t_env *env);
 
 #endif
