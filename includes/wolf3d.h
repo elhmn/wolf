@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 13:46:50 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 16:57:05 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 # define	WIDTH	320
 
 typedef unsigned int	t_uint;
+
+/*
+** layer struct 
+**	depht		==> layer depht
+**	img			==>	img
+*/
+
+typedef struct		s_lay
+{
+	void		*img;
+	t_uint		depht;
+}					t_lay;
 
 typedef struct		s_pos
 {
@@ -96,5 +108,6 @@ typedef struct		s_wall
 	t_uint			color;
 }					t_wall;
 
+void	new_lay(t_env *env, t_lay *lay, t_uint depht);
 
 #endif

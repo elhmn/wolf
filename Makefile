@@ -6,13 +6,13 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2014/11/08 14:16:36 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/11/08 16:51:45 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = wolf3d
 
-SRC = main.c check_errors.c
+SRC = main.c check_errors.c fun_err_01.c
 
 SRCDIR = ./srcs/
 
