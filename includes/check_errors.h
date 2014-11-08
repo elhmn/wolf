@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_errors.c                                     :+:      :+:    :+:   */
+/*   check_errors.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 17:15:13 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 14:19:05 by bmbarga          ###   ########.fr       */
+/*   Created: 2014/11/08 13:48:17 by bmbarga           #+#    #+#             */
+/*   Updated: 2014/11/08 14:17:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
-#include "wolf3d.h"
-#include "check_errors.h"
+#ifndef	CHECK_ERRORS_H
+# define CHECK_ERRORS_H
 
-void	check_errors(t_uint code, char *file_name, char *var_name)
+# define ERR			ft_putstr("Error : ");
+# define ERR_VAR(var)	ft_putstr(var);
+# define ERR_SP			ft_putstr(" :: ");
+# define ERR_FILE(file)	ft_putstr(file);
+# define ERR_MALLOC 	ft_putendl("malloc");
+
+enum	e_code
 {
-	t_uint	i;
+	MALLOC
+};
 
-	i = -1;
-	ERR ERR_VAR(var_name) ERR_SP ERR_FILE(file_name) ERR_SP
-	while (++i < (MALLOC + 1))
-		if (i == code)
-			ERR_MALLOC
-	exit(0);
-}
+
+void	check_errors(t_uint code, char *file_name, char *var_name);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 13:34:15 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 14:20:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 #include <stdlib.h>
 #include "wolf3d.h"
 #include "libft.h"
-
-# define HEIGHT 400
-# define WIDTH 400
+#include "check_errors.h"
 
 /*
 static char	**map_alloc(t_uint h, t_uint w)
@@ -92,12 +90,28 @@ int		main(int ac, char **av)
 }
 */
 
-int		main(int ac, cahr **av)
+/*
+static void	init_env(t_env *env)
 {
+	env->win = NULL;
+	env->mlx = NULL;
+
+	if (!env->win = mlx_new_window(mlx, WIDTH, HEIGH, "wolf3d"))
+		check_errors(MALLOC, "env->win", "main.c");
+}
+*/
+
+int		main(int ac, char **av)
+{
+	t_env	env;
+
+	env.mlx = ;
+	env.win = mlx_new_window(mlx);
+	check_errors(MALLOC, "env->win", "main.c");
 	if (ac)
 	{
 		av = av;
-		ft_putendl("test");
+		
 	}
 	return (0);
 }

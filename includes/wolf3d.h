@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/07 17:43:15 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 13:46:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define WOLF3D_H
 
 # define	CHAMPS	60
+# define	HEIGH	200
+# define	WIDTH	320
 
 typedef unsigned int	t_uint;
 
@@ -22,6 +24,17 @@ typedef struct		s_pos
 	t_uint				x;
 	t_uint				y;
 }					t_pos;
+
+/*
+** environement variable
+*/
+
+typedef struct	s_env
+{
+	void	*mlx;
+	void	*win;
+}				t_env;
+
 
 typedef struct		s_ray
 {
@@ -49,7 +62,7 @@ typedef struct			s_cam
 }						t_cam;
 
 /*
-** s_screen		==> structure de l'ecran
+** s_win		==> structure de l'ecran
 ** h 			==> hauteur de l'ecran
 ** w 			==> largeur de l'ecran
 ** center		==> postion du centre de l ecran 
@@ -62,7 +75,7 @@ typedef struct		s_screen
 	int				w;
 	t_pos			center;
 	unsigned int	dist_proj;
-}					t_sceen;
+}					t_screen;
 
 /*
 ** s_wall		==> structure du mur
