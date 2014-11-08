@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:56:29 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 19:48:03 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <math.h>
 
-# define	CHAMPS		60
+# define	CHAMPS		3.14 / 3.0
 # define	WALL_H		64
 # define	WALL_W		64
 # define	START_DIR	 90
@@ -98,7 +98,6 @@ typedef struct		s_screen
 	int				h;
 	int				w;
 	t_pos			center;
-	unsigned int	dist_proj;
 }					t_screen;
 
 /*
@@ -129,5 +128,13 @@ void	init_cam(t_cam *cam);
 void	close_mlx(t_env *env);
 void	init_cam(t_cam *cam);
 void	init_env(t_env *env);
+void	init_screen(t_screen *screen);
+
+/*
+** debug_01.c
+*/
+
+void	print_cam(t_cam *cam);
+void	print_screen(t_screen *screen);
 
 #endif

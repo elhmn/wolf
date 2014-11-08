@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:49:41 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 19:46:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ static void	print_map(char map[][11], t_uint h)//, t_uint w)
 
 int		main(int ac, char **av)
 {
-	t_env	env;
-	t_lay	bg_lay;
-//	t_cam	cam;
+	t_env		env;
+	t_screen 	screen;
+	t_lay		bg_lay;
+	t_cam		cam;
 
 	/*** ONLY FOR TEST ***/
 	char	map[11][11] = { {"1111111111\0"},
@@ -59,6 +60,10 @@ int		main(int ac, char **av)
 
 	init_env(&env);
 	new_lay(&env, &bg_lay, 5000);
+	init_cam(&cam);
+	init_screen(&screen);
+	print_cam(&cam);
+	print_screen(&screen);
 	print_map(map, 10);
 	if (ac)
 	{
