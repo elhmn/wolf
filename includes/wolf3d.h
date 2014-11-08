@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 16:57:05 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 17:23:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # define	WIDTH	320
 
 typedef unsigned int	t_uint;
+
+enum	e_obj
+{
+	VOID,
+	WALL,
+	CAM
+};
 
 /*
 ** layer struct 

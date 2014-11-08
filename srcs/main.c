@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 17:15:40 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/08 17:24:02 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,6 @@
 #include "libft.h"
 #include "check_errors.h"
 
-/*
-static char	**map_alloc(t_uint h, t_uint w)
-{
-	char	**map;
-	t_uint	i;
-
-	i = -1;
-	map = NULL;
-	if (!(map = (char**)malloc(sizeof(char*) * (h + 1))))
-	{
-		ft_putendl("Error alloc map");
-		return (NULL);
-	}
-	map[h] = 0;
-	while (++i < h)
-	{
-		if (!(map[i] = ft_strnew(w)))
-		{
-			ft_putendl("Error alloc map[i]");
-			return (NULL);
-		}
-	}
-	return (map);
-}
-`
 static void	print_map(char map[][11], t_uint h)//, t_uint w)
 {
 	t_uint	i;
@@ -60,35 +35,6 @@ static void	print_map(char map[][11], t_uint h)//, t_uint w)
 		i++;
 	}
 }
-
-int		main(int ac, char **av)
-{
-//	char	**map;
-//	map = NULL;
-//	map = map_alloc(20, 20);
-	char	map[11][11] = { {"1111111111\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1111111111\0"},
-							{0}
-							};
-	av = av;
-	print_map(map, 10);
-	//if (!map)
-//		return (-1);
-	if (ac)
-	{
-		ft_putendl("test");			
-	}
-	return (0);
-}
-*/
 
 static void	init_env(t_env *env)
 {
@@ -123,9 +69,25 @@ int		main(int ac, char **av)
 {
 	t_env	env;
 	t_lay	bg_lay;
+	
+	/*** ONLY FOR TEST ***/
+	char	map[11][11] = { {"1111111111\0"},
+							{"1000000001\0"},
+							{"1000000001\0"},
+							{"1000000001\0"},
+							{"1000000001\0"},
+							{"1000000001\0"},
+							{"1000020001\0"},
+							{"1000000001\0"},
+							{"1000000001\0"},
+							{"1111111111\0"},
+							{0}
+							};
+	/******* TEST *******/
 
 	init_env(&env);
 	new_lay(&env, &bg_lay, 5000);
+	print_map(map, 10);
 	if (ac)
 	{
 		av = av;
