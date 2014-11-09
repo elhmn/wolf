@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 08:42:52 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 09:36:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ enum	e_obj
 
 /*
 ** layer struct 
-**	depht		==> layer depht
-**	img			==>	img
+** depht		==> layer depht
+** img			==>	img
 */
 
 typedef struct		s_lay
@@ -135,17 +135,21 @@ void	init_screen(t_screen *screen);
 */
 
 void	init_wall(t_obj *wall);
+void	init_ray(t_ray *ray, double direction);
 
 /*
 ** debug_01.c
 */
 
+void	print_ray(t_ray *ray);
 void	print_obj(t_obj *obj);
 void	print_cam(t_cam *cam);
 void	print_screen(t_screen *screen);
 
 /*
-** calcul de la longueur d'un rayon
+** raycaster.c
 */
+
+void	ray_caster(t_env *env, t_cam *cam, char **map);
 
 #endif

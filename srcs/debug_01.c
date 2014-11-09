@@ -6,12 +6,26 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 19:49:07 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 08:18:17 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 09:19:25 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "wolf3d.h"
+
+void	print_ray(t_ray *ray)
+{
+	ft_putendl("\nDEBUG    :: ray");
+	ft_putstr("ray->len = [");
+	ft_putnbr((t_uint)ray->len);
+	ft_putendl("]");
+	ft_putstr("ray->virtual_len = [");
+	ft_putnbr((t_uint)ray->virtual_len);
+	ft_putendl("]");
+	ft_putstr("ray->direction = [");
+	ft_putnbr((t_uint)ray->direction);
+	ft_putendl("]\n");
+}
 
 void	print_screen(t_screen *screen)
 {
