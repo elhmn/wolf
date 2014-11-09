@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 22:42:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 08:09:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		main(int ac, char **av)
 	t_env		env;
 	t_screen 	screen;
 	t_lay		bg_lay;
+	t_obj		wall;
 	t_cam		cam;
 
 	/*** ONLY FOR TEST ***/
@@ -62,9 +63,11 @@ int		main(int ac, char **av)
 	new_lay(&env, &bg_lay, 5000);
 	init_cam(&cam);
 	init_screen(&screen);
+	init_wall(&wall);
 	map[cam.pos.y / WALL_H][cam.pos.x / WALL_W] = CAM;
 	print_cam(&cam);
 	print_screen(&screen);
+	print_obj(&wall);
 	print_map(map, 10);
 	if (ac)
 	{

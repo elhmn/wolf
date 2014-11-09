@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:48:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 22:49:07 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 08:23:34 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_cam(t_cam *cam)
 		if (!(cam = (t_cam*)malloc(sizeof(t_cam))))
 			check_errors(MALLOC, "cam", "init_wolf_var.c");
 	}
-	cam->angle = CHAMPS;
+	cam->champs = CHAMPS;
 	cam->direction = START_DIR;
 	cam->pos.x = (WALL_W * 5) + (WALL_W / 2);
 	cam->pos.y = (WALL_H * 4) + (WALL_H / 2);

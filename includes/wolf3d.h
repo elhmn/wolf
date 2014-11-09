@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/08 22:54:19 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 08:42:52 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@
 # define	CHAMPS		M_PI / 3.0
 # define	WALL_H		64
 # define	WALL_W		64
-# define	START_DIR	 90
+# define	START_DIR	M_PI / 2.0
 # define	HEIGH		200
 # define	WIDTH		320
+# define	DEG(x)		(x * 180.0) / M_PI
+# define	RAD(x)		(x * M_PI) / 180.0
 
 typedef unsigned int	t_uint;
 
@@ -62,15 +64,15 @@ typedef struct	s_env
 
 typedef struct		s_ray
 {
-	t_uint			len;
-	t_pos			direction;
-	t_uint			cadrant; // intervalle trigo auquel l angle appartiens
+	double			len;
+	double			virtual_len;			
+	double			direction;
 }					t_ray;
 
 /*
 ** s_cam		==> structure of camera
 ** direction 	==> verteur directeur de la camera
-** angle 		==> champs visuel de la camera
+** champs 		==> champs visuel de la camera
 ** pos 			==> position de la camera sur la map 
 ** dist_proj 	==> distance de projection
 ** h_cam		==> hauteur de la camera
@@ -78,8 +80,8 @@ typedef struct		s_ray
 
 typedef struct			s_cam
 {
-	t_uint			direction;
-	t_uint			angle;
+	double			direction;
+	double			champs;
 	t_pos			pos;
 	t_uint			dist_proj;
 	t_uint			h_cam;
@@ -101,23 +103,21 @@ typedef struct		s_screen
 }					t_screen;
 
 /*
-** s_wall		==> structure du mur
-** h 			==> hauteur du mur
-** w 			==> largeur du mur
-** type			==> type du mur (bonus)
-** text 		==> text du mur
-** color		==> coleur du mur
+** s_obj		==> structure objet
+** h 			==> hauteur objet
+** w 			==> largeur objet
+** type			==> type de l objet (bonus)
+** text 		==> texture de l objet
+** color		==> coleur de l'objet (opt) 
 */
 
-typedef struct		s_wall
+typedef struct		s_obj
 {
-	t_uint			dist_to_cam;
 	t_uint			h;
 	t_uint			w;
 	t_uint			type;
 	t_uint			text;
-	t_uint			color;
-}					t_wall;
+}					t_obj;
 
 /*
 ** init_var_01.c
@@ -131,21 +131,21 @@ void	init_env(t_env *env);
 void	init_screen(t_screen *screen);
 
 /*
+** init_var_02.c
+*/
+
+void	init_wall(t_obj *wall);
+
+/*
 ** debug_01.c
 */
 
+void	print_obj(t_obj *obj);
 void	print_cam(t_cam *cam);
 void	print_screen(t_screen *screen);
 
 /*
 ** calcul de la longueur d'un rayon
-*/
-
-/*
-void	ray_len(s_cam *cam, t_ray *ray, t_wall wall)
-{
-		
-}
 */
 
 #endif
