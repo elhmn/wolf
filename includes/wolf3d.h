@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 14:19:34 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 18:15:38 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # define	WALL_W		64
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	M_PI / 2.0
+# define	START_DIR	M_PI // 2.0
 # define	HEIGH		200
 # define	WIDTH		320
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0
-
-typedef unsigned int	t_uint;
+# define	ABS(x)		(x < 0) ? -x : x
+typedef int	t_uint;
 
 enum	e_obj
 {
@@ -152,6 +152,6 @@ void	print_screen(t_screen *screen);
 ** raycaster.c
 */
 
-void	ray_caster(t_env *env, t_cam *cam, char map[][11]);
+void	raycaster(t_env *env, t_cam *cam, char map[][11]);
 
 #endif
