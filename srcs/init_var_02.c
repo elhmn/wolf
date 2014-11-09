@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 09:16:29 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 14:13:40 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_ray(t_ray *ray, double direction)
 			check_errors(MALLOC, "ray", "init_var_02");
 	ray->len = 0;
 	ray->virtual_len = 0;
-	ray->direction = direction;
+	ray->direction = direction > 2. * M_PI ? direction / 2. * M_PI : direction;
 }
 
 void	init_wall(t_obj *wall)

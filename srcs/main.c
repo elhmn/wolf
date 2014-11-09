@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 08:09:31 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 14:19:16 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		main(int ac, char **av)
 	print_screen(&screen);
 	print_obj(&wall);
 	print_map(map, 10);
+	raycaster(&env, &cam, map);
 	if (ac)
 	{
 		av = av;

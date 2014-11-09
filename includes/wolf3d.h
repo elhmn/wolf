@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 09:36:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 14:19:34 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define	CHAMPS		M_PI / 3.0
 # define	WALL_H		64
 # define	WALL_W		64
+# define	MAP_H		11
+# define	MAP_W		11
 # define	START_DIR	M_PI / 2.0
 # define	HEIGH		200
 # define	WIDTH		320
@@ -150,6 +152,6 @@ void	print_screen(t_screen *screen);
 ** raycaster.c
 */
 
-void	ray_caster(t_env *env, t_cam *cam, char **map);
+void	ray_caster(t_env *env, t_cam *cam, char map[][11]);
 
 #endif
