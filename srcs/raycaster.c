@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 19:59:15 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 22:04:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,8 @@ void			raycaster(t_env *env, t_cam *cam, char map[][11])
 	float		ang_end;
 	float		inc;
 	t_ray		ray;
-	t_pos		len;
+	float		len_x;
+	float		len_y;
 	int			i;
 	int			j;
 	int			lim;
@@ -172,38 +173,39 @@ void			raycaster(t_env *env, t_cam *cam, char map[][11])
 		check_errors(NUL, "env || cam", "raycaster.c");
 	ang_strt = cam->direction + (cam->champs / 2.0);
 	ang_end = cam->direction - (cam->champs / 2.0);
-	inc = (float)(cam->champs / (float)WIDTH);
+	inc = ((float)cam->champs / (float)WIDTH);
 	while (ang_strt >= ang_end)
 	{
 //		printf("ang_strt = [%d]\n", (int)(DEG(ang_strt)));
 		init_ray(&ray, ang_strt);
-		len.y =	(t_uint)inter_vert(cam, &ray, map);
-		len.x = (t_uint)inter_hor(cam, &ray, map);
-		if (len.x == 0 && len.y != 0)
-			ray.len = len.y;
-		else if (len.y == 0 && len.x != 0)
-			ray.len = len.x;
+		len_y =	inter_vert(cam, &ray, map);
+		len_x = inter_hor(cam, &ray, map);
+		if (len_x == 0 && len_y != 0)
+			ray.len = len_y;
+		else if (len_y == 0 && len_x != 0)
+			ray.len = len_x;
 		else
-			ray.len = (float)((len.x < len.y) ? len.x : len.y);
-		printf("len.x = [%d] && len.y = [%d]\n", len.x, len.y);
-//		printf("AVANT :: ray->len = [%lf]\n", ray.len);
-		ray.len = ray.len * (float)(cos(cam->champs / 2.));
+			ray.len = (len_x < len_y) ? len_x : len_y;
+		printf("len_x = [%f] && len_y = [%f]\n", len_x, len_y);
+		printf("AVANT :: ray->len = [%f]\n", ray.len);
+		ray.len *= (float)(cos(ang_strt - cam->direction));
 		cam->virtual_h = (float)(cam->dist_proj * WALL_H) / ray.len;
 		lim = (HEIGH - (t_uint)cam->virtual_h) / 2;
-		printf("cam->virtual_h = [%d]\n", (t_uint)cam->virtual_h);
+		printf("cam->virtual_h = [%f]\n", cam->virtual_h);
 		j = 0;
 		while (j <= lim)
 			mlx_pixel_put(env->mlx, env->win, i, j++, 0x00FFFF);
 		while (j <	(t_uint)((float)lim + cam->virtual_h))
 			mlx_pixel_put(env->mlx, env->win, i, j++, 0xFF00FF);
-		while (j <= HEIGH)
+		while (j < HEIGH)
 			mlx_pixel_put(env->mlx, env->win, i, j++, 0x00FFFF);
-		printf("APRES :: ray->len = [%f]\n", ray.len);
+//		printf("APRES :: ray->len = [%f]\n", ray.len);
 		//determiner la distance |cam-obj|
 		//determiner la distance |cam-obj| virtuelle
 		//determiner la hauteur de l obj a l ecran
 		//affichage
 		ang_strt -= inc;
+//		printf("inc = [%f]", inc);
 		i++;
 //		printf("ang_strt += inc = [%.15lf]\n", ang_strt);
 	}
