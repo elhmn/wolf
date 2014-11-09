@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 17:12:46 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 19:28:08 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "libft.h"
 #include "check_errors.h"
 
-void	init_ray(t_ray *ray, double direction)
+void	init_ray(t_ray *ray, float direction)
 {
 	ray->len = 0;
 	ray->virtual_len = 0;

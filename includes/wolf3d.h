@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 18:15:38 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 20:00:07 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 # define	WALL_W		64
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	M_PI // 2.0
-# define	HEIGH		200
-# define	WIDTH		320
+# define	START_DIR	M_PI / 2.
+# define	HEIGH		448
+# define	WIDTH		760
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0
 # define	ABS(x)		(x < 0) ? -x : x
+
 typedef int	t_uint;
 
 enum	e_obj
@@ -66,9 +67,9 @@ typedef struct	s_env
 
 typedef struct		s_ray
 {
-	double			len;
-	double			virtual_len;			
-	double			direction;
+	float			len;
+	float			virtual_len;			
+	float			direction;
 }					t_ray;
 
 /*
@@ -82,11 +83,12 @@ typedef struct		s_ray
 
 typedef struct			s_cam
 {
-	double			direction;
-	double			champs;
+	float			direction;
+	float			champs;
 	t_pos			pos;
 	t_uint			dist_proj;
 	t_uint			h_cam;
+	float			virtual_h;
 }						t_cam;
 
 /*
@@ -137,7 +139,7 @@ void	init_screen(t_screen *screen);
 */
 
 void	init_wall(t_obj *wall);
-void	init_ray(t_ray *ray, double direction);
+void	init_ray(t_ray *ray, float direction);
 
 /*
 ** debug_01.c
