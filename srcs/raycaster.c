@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 22:04:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/09 22:12:12 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,12 +186,12 @@ void			raycaster(t_env *env, t_cam *cam, char map[][11])
 			ray.len = len_x;
 		else
 			ray.len = (len_x < len_y) ? len_x : len_y;
-		printf("len_x = [%f] && len_y = [%f]\n", len_x, len_y);
-		printf("AVANT :: ray->len = [%f]\n", ray.len);
+	//	printf("len_x = [%f] && len_y = [%f]\n", len_x, len_y);
+	//	printf("AVANT :: ray->len = [%f]\n", ray.len);
 		ray.len *= (float)(cos(ang_strt - cam->direction));
 		cam->virtual_h = (float)(cam->dist_proj * WALL_H) / ray.len;
 		lim = (HEIGH - (t_uint)cam->virtual_h) / 2;
-		printf("cam->virtual_h = [%f]\n", cam->virtual_h);
+	//	printf("cam->virtual_h = [%f]\n", cam->virtual_h);
 		j = 0;
 		while (j <= lim)
 			mlx_pixel_put(env->mlx, env->win, i, j++, 0x00FFFF);
