@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 19:49:52 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 19:51:14 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define	WALL_W		64
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	0.
+# define	START_DIR	M_PI
 # define	HEIGH		448
 # define	WIDTH		768
 # define	DEG(x)		(x * 180.0) / M_PI
