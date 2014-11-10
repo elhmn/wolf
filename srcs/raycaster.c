@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 17:06:54 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 18:24:03 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static float	inter_vert(t_cam *cam, t_ray *ray, char map[][11])
 	t_pos	pos;
 	float	port_2;
 
-	printf("ray->dir = [%.50lf]\n", ray->direction);
+//	printf("ray->dir = [%.50lf]\n", ray->direction);
 	if ((int)DEG(ray->direction) == (int)DEG(M_PI / 2.)
 			|| (int)DEG(ray->direction) == (int)DEG((3. * M_PI) / 2))
 		return (0);
@@ -63,14 +63,8 @@ static float	inter_vert(t_cam *cam, t_ray *ray, char map[][11])
 		w = WALL_W - (cam->pos.x % WALL_W);
 	ray->len = (float)w / cos(mes_ang(ray->direction));
 	map_pos_vert(cam, ray, &pos, w);
-	printf("ray->len = [%f]\n", ray->len);
-	printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
-	if ((map[pos.y][pos.x] == 1))
-	{
-		//	printf("ray->len = [%f]\n", ray->len);
-		printf("FOUND ###########################////\n");
-		printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
-	}
+//	printf("ray->len = [%f]\n", ray->len);
+	//printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
 	port_2 = (float)WALL_W / cos(mes_ang(ray->direction));
 	while (!((map[pos.y][pos.x] == 1 || pos.y >= MAP_H || pos.y < 0)
 		|| pos.x >= MAP_W || pos.x < 0))
@@ -121,12 +115,6 @@ static float	inter_hor(t_cam *cam, t_ray *ray, char map[][11])
 		h = WALL_H - (cam->pos.y % WALL_H);
 	ray->len = (float)h / sin(mes_ang(ray->direction));
 	map_pos_hor(cam, ray, &pos, h);
-	if ((map[pos.y][pos.x] == 1))
-	{
-		//	printf("ray->len = [%f]\n", ray->len);
-		printf("FOUND ###########################////\n");
-		printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
-	}
 	port_2 = (float)WALL_H / sin(mes_ang(ray->direction));
 	while (!((map[pos.y][pos.x] == 1 || pos.y >= MAP_H || pos.y < 0)
 		|| pos.x >= MAP_W || pos.x < 0))
@@ -193,12 +181,15 @@ void			raycaster(t_env *env, t_cam *cam, char map[][11])
 		else
 			ray.len = (len_x <= len_y) ? len_x : len_y;
 
+		printf("len_x = [%f] && len_y = [%f]\n", len_x, len_y);
+		printf("AVANT :: ray->len = [%f]\n", ray.len);
 		if (len_x < len_y)
 			printf("intersection horizontal\n");
 		else
 			printf("intersection vertical\n");
 
 		ray.v_len = ray.len * (float)(cos(ang_strt - cam->direction));
+		printf("APRES :: ray->v_len = [%f]\n", ray.v_len);
 		cam->virtual_h = (float)(cam->dist_proj * WALL_H) / ray.v_len;
 		lim = (HEIGH - (t_uint)cam->virtual_h) / 2;
 		j = 0;
