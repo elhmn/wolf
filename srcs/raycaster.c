@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 18:24:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 19:49:43 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void			map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w)
 	float		h;
 
 	h = sqrt(pow(ray->len, 2) - pow(w, 2));
-	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2)
+	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2.)
 		pos->x = (cam->pos.x - w) / WALL_W;
 	else
 		pos->x = (cam->pos.x + w) / WALL_W;
@@ -55,9 +55,9 @@ static float	inter_vert(t_cam *cam, t_ray *ray, char map[][11])
 
 //	printf("ray->dir = [%.50lf]\n", ray->direction);
 	if ((int)DEG(ray->direction) == (int)DEG(M_PI / 2.)
-			|| (int)DEG(ray->direction) == (int)DEG((3. * M_PI) / 2))
+			|| (int)DEG(ray->direction) == (int)DEG((3. * M_PI) / 2.))
 		return (0);
-	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2)
+	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2.)
 		w = cam->pos.x % WALL_W;
 	else
 		w = WALL_W - (cam->pos.x % WALL_W);
@@ -66,11 +66,12 @@ static float	inter_vert(t_cam *cam, t_ray *ray, char map[][11])
 //	printf("ray->len = [%f]\n", ray->len);
 	//printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
 	port_2 = (float)WALL_W / cos(mes_ang(ray->direction));
-	while (!((map[pos.y][pos.x] == 1 || pos.y >= MAP_H || pos.y < 0)
-		|| pos.x >= MAP_W || pos.x < 0))
+	while (!(pos.y >= MAP_H || pos.x >= MAP_W || pos.x < 0 || pos.y < 0 || (map[pos.y][pos.x] == 1)))
 	{
 			ray->len += port_2;
 			w += WALL_W;
+	printf("pos.x = [%d] && pos.y = [%d]\n", pos.x, pos.y);
+	printf("DEBUG ::: INTER_VERT ###################\n");
 			map_pos_vert(cam, ray, &pos, w);
 	}
 	return (ray->len);
@@ -116,8 +117,7 @@ static float	inter_hor(t_cam *cam, t_ray *ray, char map[][11])
 	ray->len = (float)h / sin(mes_ang(ray->direction));
 	map_pos_hor(cam, ray, &pos, h);
 	port_2 = (float)WALL_H / sin(mes_ang(ray->direction));
-	while (!((map[pos.y][pos.x] == 1 || pos.y >= MAP_H || pos.y < 0)
-		|| pos.x >= MAP_W || pos.x < 0))
+	while (!(pos.y >= MAP_H || pos.x >= MAP_W || pos.x < 0 || pos.y < 0 || (map[pos.y][pos.x] == 1)))
 	{
 		{
 			ray->len += port_2;
@@ -172,8 +172,10 @@ void			raycaster(t_env *env, t_cam *cam, char map[][11])
 	while (ang_strt >= ang_end)
 	{
 		init_ray(&ray, ang_strt);
-		len_y =	inter_vert(cam, &ray, map);
+		printf("ray->dir = [%d]\n", (int)(DEG(ray.direction)));
 		len_x = inter_hor(cam, &ray, map);
+		printf("DEBGU ::: ###################\n");
+		len_y =	inter_vert(cam, &ray, map);
 		if (len_x == 0 && len_y != 0)
 			ray.len = len_y;
 		else if (len_y == 0 && len_x != 0)
