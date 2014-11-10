@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 22:06:22 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 17:08:27 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define	WALL_W		64
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	M_PI
+# define	START_DIR	(3. * M_PI) / 2.
 # define	HEIGH		448
 # define	WIDTH		768
 # define	DEG(x)		(x * 180.0) / M_PI
@@ -68,7 +68,7 @@ typedef struct	s_env
 typedef struct		s_ray
 {
 	float			len;
-	float			virtual_len;			
+	float			v_len;
 	float			direction;
 }					t_ray;
 

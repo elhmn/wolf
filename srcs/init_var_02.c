@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 19:28:08 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 15:22:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
 void	init_ray(t_ray *ray, float direction)
 {
 	ray->len = 0;
-	ray->virtual_len = 0;
+	ray->v_len = 0;
 	ray->direction = (direction >= 2. * M_PI) ? direction / (2. * M_PI) : direction;
-//	printf("ray->direction = [%lf]\n", DEG(ray->direction));
 }
+
+//	printf("ray->direction = [%lf]\n", DEG(ray->direction));
 
 void	init_wall(t_obj *wall)
 {

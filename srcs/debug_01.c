@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 19:49:07 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/09 21:12:50 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 15:16:53 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_ray(t_ray *ray)
 	ft_putnbr((t_uint)ray->len);
 	ft_putendl("]");
 	ft_putstr("ray->virtual_len = [");
-	ft_putnbr((t_uint)ray->virtual_len);
+	ft_putnbr((t_uint)ray->v_len);
 	ft_putendl("]");
 	ft_putstr("ray->direction = [");
 	ft_putnbr((t_uint)ray->direction);
