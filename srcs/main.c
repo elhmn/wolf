@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 15:18:46 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/11 01:17:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,14 @@
 #include "libft.h"
 #include "check_errors.h"
 
-static void	print_map(char map[][11], t_uint h)//, t_uint w)
+static void	print_map(char map[][11], t_uint h)
 {
 	t_uint	i;
-//	t_uint	j;
 
 	i = 0;
-//	j = 0;
 	while (i < h)
 	{
-//		j = 0;
-//		while (j < w)
-//		{
-			ft_putendl(map[i]);
-//			j++;
-//		}
+		ft_putendl(map[i]);
 		i++;
 	}
 }
@@ -44,20 +37,18 @@ int		main(int ac, char **av)
 	t_obj		wall;
 	t_cam		cam;
 
-	/*** ONLY FOR TEST ***/
 	char	map[11][11] = { {"1111111111\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1001100001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1000000001\0"},
-							{"1111111111\0"},
-							{0}
-							};
-	/******* TEST *******/
+		{"1001001001\0"},
+		{"1000001001\0"},
+		{"1001010101\0"},
+		{"1010000101\0"},
+		{"1100010001\0"},
+		{"1000000001\0"},
+		{"1000100001\0"},
+		{"1000000001\0"},
+		{"1111111111\0"},
+		{0}
+	};
 
 	init_env(&env);
 	new_lay(&env, &bg_lay, 5000);
@@ -70,6 +61,7 @@ int		main(int ac, char **av)
 	print_obj(&wall);
 	print_map(map, 10);
 	raycaster(&env, &cam, map);
+	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 	if (ac)
 	{
 		av = av;

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:48:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 15:06:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/10 20:09:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	init_cam(t_cam *cam)
 	}
 	cam->champs = CHAMPS;
 	cam->direction = START_DIR;
+	cam->i = 0;
+	cam->j = 0;
 	cam->pos.x = (WALL_W * 5) + (WALL_W / 2);
 	cam->pos.y = (WALL_H * 4) + (WALL_H / 2);
 	tan = (float)((float)sin((CHAMPS / 2.0)) / (float)cos((CHAMPS / 2.0)));

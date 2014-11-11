@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 19:51:14 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/11/11 00:36:09 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 # define	CHAMPS		M_PI / 3.0
 # define	WALL_H		64
-# define	WALL_W		64
+# define	WALL_W		64	
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	M_PI
-# define	HEIGH		448
-# define	WIDTH		768
+# define	START_DIR	0.
+# define	HEIGH		400
+# define	WIDTH		400
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0
 # define	ABS(x)		(x < 0) ? -x : x
@@ -62,6 +62,7 @@ typedef struct	s_env
 {
 	void	*mlx;
 	void	*win;
+	void	*img;
 }				t_env;
 
 
@@ -88,6 +89,8 @@ typedef struct			s_cam
 	t_pos			pos;
 	t_uint			dist_proj;
 	t_uint			h_cam;
+	t_uint			i;
+	t_uint			j;
 	float			virtual_h;
 }						t_cam;
 
@@ -155,5 +158,21 @@ void	print_screen(t_screen *screen);
 */
 
 void	raycaster(t_env *env, t_cam *cam, char map[][11]);
+
+/*
+** ray_len.c
+*/
+
+float	inter_hor(t_cam *cam, t_ray *ray, char map[][11]);
+float	inter_vert(t_cam *cam, t_ray *ray, char map[][11]);
+void	map_pos_hor(t_cam *cam, t_ray *ray, t_pos *pos, t_uint h);
+void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w);
+float	mes_ang(float ang);
+
+/*
+** draw.c
+*/
+
+void	draw(t_env *env, t_cam *cam);
 
 #endif
