@@ -26,6 +26,6 @@ void	draw(t_env *env, t_cam *cam)
 	while (cam->j < (t_uint)((float)lim + cam->virtual_h))
 		mlx_pixel_put(env->mlx, env->win, cam->i, (cam->j)++, 0xFF00FF);
 	while (cam->j < HEIGH)
-		mlx_pixel_put(env->mlx, env->i, cam->i, (cam->j)++, 0x00FFFF);
+		mlx_pixel_put(env->mlx, env->win, cam->i, (cam->j)++, 0x00FFFF);
 	(cam->i)++;
 }

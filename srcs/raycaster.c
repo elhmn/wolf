@@ -36,12 +36,12 @@ void		raycaster(t_env *env, t_cam *cam, char map[][11])
 	float		ang_end;
 	float		inc;
 	t_ray		ray;
-	char		*img_map;
-	int			bpp = 32;
+//	char		*img_map;
+//	int			bpp = 32;
 
 	cam->i = 0;
 	env->img = mlx_new_image(env->mlx, WIDTH, HEIGH);
-	img_map = (char*)mlx_get_data_addr(env->img, &bpp, 4 * WIDTH, 1);
+//	img_map = (char*)mlx_get_data_addr(env->img, &bpp, 4 * WIDTH, 1);
 	if (!env || !cam)
 		check_errors(NUL, "env || cam", "raycaster.c");
 	ang_strt = cam->direction + (cam->champs / 2.0);

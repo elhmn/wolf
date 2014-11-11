@@ -27,7 +27,7 @@ FLAGS = -Wall -Werror -Wextra
 
 LIB42 = -L /usr/X11/lib
 
-LIBHOME = -L ./
+LIBHOME = -L /usr/lib64/X11/
 
 LIBFT = -L ./libft/
 
@@ -40,6 +40,11 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	make -C libft/
 	$(CC) $(FLAGS) $(LIB42) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
+
+home: $(OBJS)
+	make -C libft/
+	$(CC) $(FLAGS) $(LIBHOME) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
+	
 
 $(OBJS): $(SRCS) 
 	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) 

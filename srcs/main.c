@@ -61,7 +61,7 @@ int		main(int ac, char **av)
 	print_obj(&wall);
 	print_map(map, 10);
 	raycaster(&env, &cam, map);
-	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
+//	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 	if (ac)
 	{
 		av = av;
