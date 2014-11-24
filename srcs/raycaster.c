@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <mlx.h>
 #include "libft.h"
 #include "check_errors.h"
-#include <mlx.h>
 
 static void	get_vlen(t_cam *cam, t_ray *ray, char map[][11])
 {

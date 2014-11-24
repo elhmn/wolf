@@ -175,4 +175,17 @@ float	mes_ang(float ang);
 
 void	draw(t_env *env, t_cam *cam);
 
+/*
+**
+*/
+
+typedef struct	s_color
+{
+	int		mask_r;
+	int		mask_g;
+	int		mask_b;
+	int		alpha;
+	int		color;
+}				t_color;
+
 #endif
