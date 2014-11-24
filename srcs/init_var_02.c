@@ -33,3 +33,14 @@ void	init_wall(t_obj *wall)
 		wall->text = 0;
 	}
 }
+
+void	init_color(t_color	*color)
+{
+	if (color)
+	{
+		color->mask_r = 0xFF0000;
+		color->mask_g = 0x00FF00;
+		color->mask_b = 0x0000FF;
+		color->color = 0x0000FF;
+	}
+}

@@ -45,6 +45,9 @@ enum	e_obj
 typedef struct		s_lay
 {
 	void		*img;
+	t_uint		bpp;
+	t_uint		line;
+	t_uint		endian;
 	t_uint		depht;
 }					t_lay;
 
@@ -127,6 +130,20 @@ typedef struct		s_obj
 }					t_obj;
 
 /*
+** structure de stockage de couleur
+**
+*/
+
+typedef struct	s_color
+{
+	int		mask_r;
+	int		mask_g;
+	int		mask_b;
+	int		alpha;
+	int		color;
+}				t_color;
+
+/*
 ** init_var_01.c
 */
 
@@ -143,6 +160,7 @@ void	init_screen(t_screen *screen);
 
 void	init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
+void	init_color(t_color	*color);
 
 /*
 ** debug_01.c
@@ -173,19 +191,15 @@ float	mes_ang(float ang);
 ** draw.c
 */
 
+//void	pixel_put_img(void *img, int x, int y, t_color *col, t_lay lay);
+
 void	draw(t_env *env, t_cam *cam);
+void	draw_img(t_env *env, t_cam *cam);
 
 /*
 **
 */
 
-typedef struct	s_color
-{
-	int		mask_r;
-	int		mask_g;
-	int		mask_b;
-	int		alpha;
-	int		color;
-}				t_color;
+
 
 #endif

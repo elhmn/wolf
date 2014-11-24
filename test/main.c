@@ -2,8 +2,8 @@
 #include <mlx.h>
 #include <stdlib.h>
 
-#define WIDTH 400
-#define	HEIGHT 400
+#define WIDTH 500
+#define	HEIGHT 500
 
 int		main(void)
 {
@@ -16,9 +16,9 @@ int		main(void)
 	int				line;
 	int				endian;
 
-	int				mask_r = 0xff0000;
-	int				mask_g = 0x00ff00;
-	int				mask_b = 0x0000ff;
+	int				mask_r = 0xFF0000;
+	int				mask_g = 0x00FF00;
+	int				mask_b = 0x0000FF;
 
 	int				color = 0x70082f;
 
