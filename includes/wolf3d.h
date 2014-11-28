@@ -16,16 +16,22 @@
 # include <math.h>
 
 # define	CHAMPS		M_PI / 3.0
-# define	WALL_H		64
-# define	WALL_W		64	
+# define	WALL_H		200
+# define	WALL_W		200
 # define	MAP_H		11
 # define	MAP_W		11
-# define	START_DIR	0.
-# define	HEIGH		400
-# define	WIDTH		400
+# define	START_DIR	M_PI
+# define	HEIGH		480
+# define	WIDTH		768
+# define	UP			65362
+# define	DOWN		65364
+# define	RIGHT		65363
+# define	LEFT		65361
+# define	ESCAPE		65307
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0
 # define	ABS(x)		(x < 0) ? -x : x
+
 
 typedef int	t_uint;
 
@@ -35,6 +41,7 @@ enum	e_obj
 	WALL = 49,
 	CAM = 50
 };
+
 
 /*
 ** layer struct 
@@ -144,6 +151,18 @@ typedef struct	s_color
 }				t_color;
 
 /*
+** game
+*/
+
+typedef	struct	s_wolf
+{
+	t_screen	*screen;
+	t_cam		*cam;
+	t_env		*env;
+	char		**map;
+}				t_wolf;
+
+/*
 ** init_var_01.c
 */
 
@@ -175,14 +194,14 @@ void	print_screen(t_screen *screen);
 ** raycaster.c
 */
 
-void	raycaster(t_env *env, t_cam *cam, char map[][11]);
+void	raycaster(t_env *env, t_cam *cam, char **map);
 
 /*
 ** ray_len.c
 */
 
-float	inter_hor(t_cam *cam, t_ray *ray, char map[][11]);
-float	inter_vert(t_cam *cam, t_ray *ray, char map[][11]);
+float	inter_hor(t_cam *cam, t_ray *ray, char **map);
+float	inter_vert(t_cam *cam, t_ray *ray, char **map);
 void	map_pos_hor(t_cam *cam, t_ray *ray, t_pos *pos, t_uint h);
 void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w);
 float	mes_ang(float ang);
@@ -195,11 +214,5 @@ float	mes_ang(float ang);
 
 void	draw(t_env *env, t_cam *cam);
 void	draw_img(t_env *env, t_cam *cam);
-
-/*
-**
-*/
-
-
 
 #endif

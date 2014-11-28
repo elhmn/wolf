@@ -15,7 +15,7 @@
 #include "libft.h"
 #include "check_errors.h"
 
-static void	get_vlen(t_cam *cam, t_ray *ray, char map[][11])
+static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
 {
 	float	len_x;
 	float	len_y;
@@ -30,7 +30,7 @@ static void	get_vlen(t_cam *cam, t_ray *ray, char map[][11])
 		ray->len = (len_x <= len_y) ? len_x : len_y;
 }
 
-void		raycaster(t_env *env, t_cam *cam, char map[][11])
+void		raycaster(t_env *env, t_cam *cam, char **map)
 {
 	float		ang_strt;
 	float		ang_end;
@@ -54,20 +54,8 @@ void		raycaster(t_env *env, t_cam *cam, char map[][11])
 		ray.v_len = ray.len * (float)(cos(ang_strt - cam->direction));
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
 		draw_img(env, cam);
-/*		t_color col;
-		init_color(&col);
-		col.color = 0x70082F;
-		int i = 0;
-		int	j;
-		while (i < 200)
-		{
-			j = 0;
-			while (j < 300)
-				pixel_put_img(env->img, i, j++, &col);	
-				i++;
-		}
-*/
 		ang_strt -= inc;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
+	mlx_destroy_image(env->mlx, env->img);
 }

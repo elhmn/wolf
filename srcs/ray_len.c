@@ -43,7 +43,7 @@ void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w)
 		pos->y = (cam->pos.y + h) / WALL_H;
 }
 
-float	inter_vert(t_cam *cam, t_ray *ray, char map[][11])
+float	inter_vert(t_cam *cam, t_ray *ray, char **map)
 {
 	t_uint	w;
 	t_pos	pos;
@@ -84,7 +84,7 @@ void	map_pos_hor(t_cam *cam, t_ray *ray, t_pos *pos, t_uint h)
 		pos->x = (cam->pos.x + w) / WALL_W;
 }
 
-float	inter_hor(t_cam *cam, t_ray *ray, char map[][11])
+float	inter_hor(t_cam *cam, t_ray *ray, char **map)
 {
 	t_uint	h;
 	t_pos	pos;
