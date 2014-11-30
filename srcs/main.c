@@ -111,17 +111,17 @@ int		main(int ac, char **av)
 	map[11] = 0;
 	while (++i < 11)
 		map[i] = ft_strnew(11);
-	ft_strcpy(map[0], "0000000000\0");
-	ft_strcpy(map[1], "0000000000\0");
-	ft_strcpy(map[2], "0000000000\0");
-	ft_strcpy(map[3], "0001000000\0");
-	ft_strcpy(map[4], "0000000000\0");
-	ft_strcpy(map[5], "0000000000\0");
-	ft_strcpy(map[6], "0000000000\0");
-	ft_strcpy(map[7], "0000000000\0");
-	ft_strcpy(map[8], "0000000000\0");
-	ft_strcpy(map[9], "0000000000\0");
-	ft_strcpy(map[10], "0000000000\0");
+	ft_strcpy(map[0], "0000000000");
+	ft_strcpy(map[1], "0000000000");
+	ft_strcpy(map[2], "0000000000");
+	ft_strcpy(map[3], "0001000000");
+	ft_strcpy(map[4], "0000000000");
+	ft_strcpy(map[5], "0000000000");
+	ft_strcpy(map[6], "0000000000");
+	ft_strcpy(map[7], "0000000000");
+	ft_strcpy(map[8], "0000000000");
+	ft_strcpy(map[9], "0000000000");
+	ft_strcpy(map[10], "0000000000");
 
 	init_env(&env);
 	new_lay(&env, &bg_lay, 5000);
