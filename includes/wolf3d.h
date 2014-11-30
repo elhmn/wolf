@@ -16,8 +16,8 @@
 # include <math.h>
 
 # define	CHAMPS		M_PI / 3.0
-# define	WALL_H		200
-# define	WALL_W		200
+# define	WALL_H		192
+# define	WALL_W		192
 # define	MAP_H		11
 # define	MAP_W		11
 # define	START_DIR	M_PI

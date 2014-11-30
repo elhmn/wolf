@@ -82,17 +82,15 @@ int		expose_hook(void *param)
 int		loop_hook(void *param)
 {
 	t_wolf	*wolf;
-	t_cam	*cam;
 
 	if (param)
 	{
 		wolf = (t_wolf*)param;
-		cam = wolf->cam;
 //		ft_putendl("test loop_hook");
 //		ft_putendl("###           ###");
 //		print_map(wolf->map);
 //		ft_putendl("###           ###");
-		(wolf->map)[cam->pos.y / WALL_H][cam->pos.x / WALL_W] = CAM;
+		(wolf->map)[wolf->cam->pos.y / WALL_H][wolf->cam->pos.x / WALL_W] = CAM;
 		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
 	return (0);
@@ -114,11 +112,11 @@ int		main(int ac, char **av)
 	while (++i < 11)
 		map[i] = ft_strnew(11);
 	ft_strcpy(map[0], "1111111111\0");
-	ft_strcpy(map[1], "1010000001\0");
+	ft_strcpy(map[1], "1000000001\0");
 	ft_strcpy(map[2], "1000000001\0");
-	ft_strcpy(map[3], "1010000001\0");
+	ft_strcpy(map[3], "1000000001\0");
 	ft_strcpy(map[4], "1000000001\0");
-	ft_strcpy(map[5], "1010000001\0");
+	ft_strcpy(map[5], "1000000001\0");
 	ft_strcpy(map[6], "1000000001\0");
 	ft_strcpy(map[7], "1000000001\0");
 	ft_strcpy(map[8], "1000000001\0");
@@ -145,7 +143,7 @@ int		main(int ac, char **av)
 		mlx_key_hook(env.win, key_hook, &cam);
 		mlx_loop_hook(env.mlx, loop_hook, &wolf);
 		mlx_loop(env.mlx);
-		//usleep(60);
+//usleep(60);
 	}
 //	close_mlx(&env);
 	return (0);
