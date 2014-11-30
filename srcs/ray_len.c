@@ -59,7 +59,7 @@ float	inter_vert(t_cam *cam, t_ray *ray, char **map)
 	ray->len = (float)w / cos(mes_ang(ray->direction));
 	map_pos_vert(cam, ray, &pos, w);
 	port_2 = (float)WALL_W / cos(mes_ang(ray->direction));
-	while (!((pos.y >= MAP_H || pos.x >= MAP_W || pos.x < 0)
+	while (!((pos.y > MAP_H || pos.x > MAP_W || pos.x < 0)
 				|| (pos.y < 0 || (map[pos.y][pos.x] == '1'))))
 	{
 		ray->len += port_2;
@@ -101,7 +101,7 @@ float	inter_hor(t_cam *cam, t_ray *ray, char **map)
 	ray->len = (float)h / sin(mes_ang(ray->direction));
 	map_pos_hor(cam, ray, &pos, h);
 	port_2 = (float)WALL_H / sin(mes_ang(ray->direction));
-	while (!((pos.y >= MAP_H || pos.x >= MAP_W || pos.x < 0)
+	while (!((pos.y > MAP_H || pos.x > MAP_W || pos.x < 0)
 				|| (pos.y < 0 || (map[pos.y][pos.x] == '1'))))
 	{
 		ray->len += port_2;
