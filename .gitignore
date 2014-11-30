@@ -13,9 +13,7 @@
 *.dylib
 
 # Tmp
-*.swp
-*.swo
-*.swn
+.*.sw*
 *.*~
 *~
 
