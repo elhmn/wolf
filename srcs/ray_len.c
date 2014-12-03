@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:20:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 20:31:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/03 21:15:15 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w)
 
 	h = sqrt(pow(ray->len, 2) - pow(w, 2));
 	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2.)
-		pos->x = (cam->pos.x - w) / WALL_W;
+	{
+		if (((int)(cam->pos.x - w) % WALL_W) == 0)
+			pos->x = -1 + (cam->pos.x - w) / WALL_W;
+		else
+			pos->x = (cam->pos.x - w) / WALL_W;
+	}
 	else
 		pos->x = (cam->pos.x + w) / WALL_W;
 	if (ray->direction >= 0. && ray->direction <= M_PI)
-		pos->y = (cam->pos.y - h) / WALL_H;
+	{
+		if (((int)(cam->pos.y - h) % WALL_H) == 0)
+			pos->y = -1 + (cam->pos.y - h) / WALL_H;
+		else
+			pos->y = (cam->pos.y - h) / WALL_H;
+	}
 	else
 		pos->y = (cam->pos.y + h) / WALL_H;
 }
@@ -74,12 +84,22 @@ void	map_pos_hor(t_cam *cam, t_ray *ray, t_pos *pos, t_uint h)
 	float		w;
 
 	w = sqrt(pow(ray->len, 2) - pow(h, 2));
-	if (ray->direction > 0. && ray->direction < M_PI)
-		pos->y = (cam->pos.y - h) / WALL_H;
+	if (ray->direction > 0. && ray->direction < M_PI) // if collision en haut
+	{
+		if (((int)(cam->pos.y - h) % WALL_H) == 0)
+			pos->y = -1 + (cam->pos.y - h) / WALL_H;
+		else
+			pos->y = (cam->pos.y - h) / WALL_H;
+	}
 	else
 		pos->y = (cam->pos.y + h) / WALL_H;
 	if (ray->direction > M_PI / 2. && ray->direction < (3. * M_PI) / 2.)
-		pos->x = (cam->pos.x - w) / WALL_W;
+	{
+		if (((int)(cam->pos.x - w) % WALL_W) == 0)
+			pos->x = -1 + (cam->pos.x - w) / WALL_W;
+		else
+			pos->x = (cam->pos.x - w) / WALL_W;
+	}
 	else
 		pos->x = (cam->pos.x + w) / WALL_W;
 }
