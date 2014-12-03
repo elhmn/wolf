@@ -32,38 +32,42 @@ void	print_map(char **map)
 
 int		key_hook(int key, void *param)
 {
-	t_cam *cam;
+	t_cam		*cam;
+	t_wolf		*wolf;
 
-	cam = (t_cam*)param;
+	wolf = (t_wolf*)param;
+	cam = (t_cam*)(wolf->cam);
 	if (param)
 	{
 		if (key == ESCAPE)
 			exit(0); //QUIT
 		if (key == LEFT)
 		{
-			ft_putendl("up_pressed : ");
+			ft_putendl("left : ");
 			cam->direction += 0.1;
 			if (cam->direction + (M_PI / 6.) >= 2. * M_PI)
 				cam->direction = M_PI / 6.;
 		}
 		if (key == RIGHT)
 		{
-			ft_putendl("down_pressed : ");
+			ft_putendl("right : ");
 			cam->direction -= 0.1;
 			if (cam->direction - (M_PI / 6.) <= 0.)
 				cam->direction = 2. * M_PI - (M_PI / 6.);
 		}
 		if (key == UP)
 		{
-			ft_putendl("right_pressed : ");
+			ft_putendl("up : ");
 			cam->pos.x += 5;
 		}
 		if (key == DOWN)
 		{
-			ft_putendl("left_pressed : ");
+			ft_putendl("down : ");
 			cam->pos.x -= 5;
 		}
-		print_cam(cam);
+//		print_cam(cam);
+//		print_map(wolf->map);
+		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
 	return (0);
 }
@@ -91,7 +95,8 @@ int		loop_hook(void *param)
 //		print_map(wolf->map);
 //		ft_putendl("###           ###");
 		(wolf->map)[wolf->cam->pos.y / WALL_H][wolf->cam->pos.x / WALL_W] = CAM;
-		raycaster(wolf->env, wolf->cam, wolf->map);
+//		print_map(wolf->map);
+//		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
 	return (0);
 }
@@ -113,14 +118,14 @@ int		main(int ac, char **av)
 		map[i] = ft_strnew(11);
 	ft_strcpy(map[0], "0000000000");
 	ft_strcpy(map[1], "0000000000");
-	ft_strcpy(map[2], "0000000000");
-	ft_strcpy(map[3], "0001000000");
-	ft_strcpy(map[4], "0000000000");
+	ft_strcpy(map[2], "0001000010");
+	ft_strcpy(map[3], "0000000000");
+	ft_strcpy(map[4], "0000000010");
 	ft_strcpy(map[5], "0000000000");
-	ft_strcpy(map[6], "0000000000");
+	ft_strcpy(map[6], "0000000010");
 	ft_strcpy(map[7], "0000000000");
 	ft_strcpy(map[8], "0000000000");
-	ft_strcpy(map[9], "0000000000");
+	ft_strcpy(map[9], "0001001010");
 	ft_strcpy(map[10], "0000000000");
 
 	init_env(&env);
@@ -140,7 +145,7 @@ int		main(int ac, char **av)
 	{
 		av = av;
 //	mlx_expose_hook(env.win, expose_hook, &env);
-		mlx_key_hook(env.win, key_hook, &cam);
+		mlx_key_hook(env.win, key_hook, &wolf);
 		mlx_loop_hook(env.mlx, loop_hook, &wolf);
 		mlx_loop(env.mlx);
 //usleep(60);

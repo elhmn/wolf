@@ -20,7 +20,7 @@
 # define	WALL_W		192
 # define	MAP_H		10
 # define	MAP_W		10
-# define	START_DIR	M_PI
+# define	START_DIR	M_PI / 2. //M_PI//(3 * M_PI) / 2.
 # define	HEIGH		480
 # define	WIDTH		768
 # define	UP			65362

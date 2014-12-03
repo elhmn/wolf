@@ -57,8 +57,8 @@ void	init_cam(t_cam *cam)
 	cam->direction = START_DIR;
 	cam->i = 0;
 	cam->j = 0;
-	cam->pos.x = (WALL_W * 5) + (WALL_W / 2);
-	cam->pos.y = (WALL_H * 4) + (WALL_H / 2);
+	cam->pos.x = (WALL_W * 3) + (WALL_W / 2);
+	cam->pos.y = (WALL_H * 7) + (WALL_H / 2);
 	tan = (float)((float)sin((CHAMPS / 2.0)) / (float)cos((CHAMPS / 2.0)));
 	cam->dist_proj = (t_uint)((float)(WIDTH / 2) / tan);
 	cam->h_cam = WALL_H / 2;
