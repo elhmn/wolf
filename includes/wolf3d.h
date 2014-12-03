@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 20:12:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/03 22:05:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define	WALL_W		192
 # define	MAP_H		10
 # define	MAP_W		10
-# define	START_DIR	M_PI / 2. //M_PI//(3 * M_PI) / 2.
+# define	START_DIR	M_PI // 2. //M_PI//(3 * M_PI) / 2.
 # define	HEIGH		480
 # define	WIDTH		768
 # define	UP			65362

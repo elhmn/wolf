@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:20:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 21:49:22 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/03 22:34:11 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	map_pos_hor(t_cam *cam, t_ray *ray, t_pos *pos, t_uint h)
 	float		w;
 
 	w = sqrt(pow(ray->len, 2) - pow(h, 2));
-	if (ray->direction > 0. && ray->direction < M_PI) // if collision en haut
+	if (ray->direction > 0. && ray->direction < M_PI)
 	{
 		if (((int)(cam->pos.y - h) % WALL_H) == 0)
 			pos->y = -1 + (cam->pos.y - h) / WALL_H;

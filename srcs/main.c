@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 21:50:33 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/03 22:48:54 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		main(int ac, char **av)
 	ft_strcpy(map[2], "1001000011");
 	ft_strcpy(map[3], "1000000111");
 	ft_strcpy(map[4], "1000100011");
-	ft_strcpy(map[5], "1000000001");
+	ft_strcpy(map[5], "1000100001");
 	ft_strcpy(map[6], "1000000011");
 	ft_strcpy(map[7], "1000000001");
 	ft_strcpy(map[8], "1000000001");
@@ -133,9 +133,9 @@ int		main(int ac, char **av)
 	init_cam(&cam);
 	init_screen(&screen);
 	init_wall(&wall);
-	print_cam(&cam);
-	print_screen(&screen);
-	print_obj(&wall);
+//	print_cam(&cam);
+//	print_screen(&screen);
+//	print_obj(&wall);
 	wolf.cam = &cam;
 	wolf.screen = &screen;
 	wolf.env = &env;

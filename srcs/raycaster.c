@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 21:48:10 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/03 22:54:10 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <mlx.h>
 #include "libft.h"
 #include "check_errors.h"
+#include <stdio.h> /*###########*/
 
 static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
 {
@@ -49,8 +50,12 @@ void		raycaster(t_env *env, t_cam *cam, char **map)
 	{
 		init_ray(&ray, ang_strt);
 		get_vlen(cam, &ray, map);
+		print_ray(&ray);
+		print_cam(cam);
 		ray.v_len = ray.len * (float)(cos(ang_strt - cam->direction));
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
+		if (cam->virtual_h > HEIGH)
+			cam->virtual_h = HEIGH;
 		draw_img(env, cam);
 		ang_strt -= inc;
 	}
