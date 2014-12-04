@@ -6,11 +6,12 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 06:44:29 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 19:56:03 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include "X.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -81,7 +82,7 @@ int		key_hook(int key, void *param)
 //		print_map(wolf->map);
 //		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
-	return (0);
+	return (1);
 }
 
 int		expose_hook(void *param)
@@ -163,12 +164,14 @@ int		main(int ac, char **av)
 	wolf.env = &env;
 	wolf.map = map;
 	wolf.key = 0;
+	mlx_do_key_autorepeaton(wolf.env->mlx);
 //	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 	if (ac)
 	{
 		av = av;
 //	mlx_expose_hook(env.win, expose_hook, &env);
-		mlx_key_hook(env.win, key_hook, &wolf);
+//		mlx_key_hook(env.win, key_hook, &wolf);
+		mlx_hook(env.win, KeyPress, KeyPressMask, key_hook, &wolf);
 		mlx_loop_hook(env.mlx, loop_hook, &wolf);
 		mlx_loop(env.mlx);
 	}

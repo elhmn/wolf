@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2014/11/10 20:26:33 by bmbarga          ###   ########.fr        #
+#    Updated: 2014/12/04 19:57:20 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ LIBFT = -L ./libft/
 
 LIBS = -lmlx -lX11 -lXext -lm -lft
 
-INCLUDES = -I includes/
+INCLUDES = -I includes/ -I /usr/X11/include/X11
 
 all: $(NAME)
 
