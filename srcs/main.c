@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 01:14:52 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 05:16:50 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,29 @@ int		key_hook(int key, void *param)
 			exit(0); //QUIT
 		if (key == LEFT)
 		{
-			ft_putendl("left : ");
+//			ft_putendl("left : ");
 			cam->direction += 0.1;
-			if (cam->direction >= 2. * M_PI)
+//			printf("cam->dir = [%f]\n", cam->direction);
+			if (cam->direction > 2. * M_PI)
+			{
+//				printf("if cam->dir >= 2 * M_PI :: \n");
+//				printf("cam->dir = [%f]\n", cam->direction);
 				cam->direction = mes_princ(cam->direction);
+//				printf("mes_princ = [%f]\n", mes_princ(cam->direction));
+			}
 		}
 		if (key == RIGHT)
 		{
-			ft_putendl("right : ");
+//			ft_putendl("right : ");
 			cam->direction -= 0.1;
+//			printf("cam->dir = [%f]\n", cam->direction);
 			if (cam->direction < 0.)
+			{
+//				printf("if cam->dir < 0 :: \n");
+//				printf("cam->dir = [%f]\n", cam->direction);
 				cam->direction = mes_princ(cam->direction);
+//				printf("mes_princ = [%f]\n", mes_princ(cam->direction));
+			}
 		}
 		if (key == UP)
 		{
@@ -65,7 +77,7 @@ int		key_hook(int key, void *param)
 			ft_putendl("down : ");
 			cam->pos.x -= 5;
 		}
-		print_map(wolf->map);
+//		print_map(wolf->map);
 		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
 	return (0);
