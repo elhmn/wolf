@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 05:19:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 06:21:30 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ void		raycaster(t_env *env, t_cam *cam, char **map)
 	ang_end = cam->direction - (cam->champs / 2.0);
 	inc = ((float)cam->champs / (float)WIDTH);
 	init_ray(&ray, ang_strt);
-	printf(" #################### \n\n");
+//	printf(" #################### \n\n");
 	while (ang_strt >= ang_end)
 	{
 	//	if (ang_strt < 0.)
 		//	ft_putendl("Negative");
 	//	else
 	//		ft_putendl("Positive");
-		printf("mes = [%f]\n", ang_strt);
-		printf("mes_princ = [%f]\n", mes_princ(ang_strt));
+//		printf("mes = [%f]\n", ang_strt);
+//		printf("mes_princ = [%f]\n", mes_princ(ang_strt));
 		init_ray(&ray, mes_princ(ang_strt));
 		get_vlen(cam, &ray, map);
 //		print_cam(cam);
@@ -83,7 +83,7 @@ void		raycaster(t_env *env, t_cam *cam, char **map)
 		draw_img(env, cam);
 		ang_strt -= inc;
 	}
-	printf(" #################### \n\n");
+//	printf(" #################### \n\n");
 	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
 	mlx_destroy_image(env->mlx, env->img);
 }

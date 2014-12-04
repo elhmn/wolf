@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 23:59:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 05:49:41 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,8 @@ typedef	struct	s_wolf
 	t_cam		*cam;
 	t_env		*env;
 	char		**map;
+	t_uint		key;
+	t_uint		vel;
 }				t_wolf;
 
 /*
