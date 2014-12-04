@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 05:49:41 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 21:54:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@
 # define	START_DIR	0. //M_PI // 2. //M_PI//(3 * M_PI) / 2.
 # define	HEIGH		480
 # define	WIDTH		768
+# define	VEL			20
+
 # define	UP			65362
 # define	DOWN		65364
 # define	RIGHT		65363
 # define	LEFT		65361
+
 # define	ESCAPE		65307
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0

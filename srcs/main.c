@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 19:56:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 21:57:35 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,26 @@ int		key_hook(int key, void *param)
 		if (key == UP)
 		{
 			ft_putendl("up : ");
-			wolf->vel = 3;
+			if (cam->direction >= 0. && cam->direction <= M_PI)
+				cam->pos.y -= VEL * sin(mes_ang(cam->direction));
+			else
+				cam->pos.y += VEL * sin(mes_ang(cam->direction));
+			if (cam->direction >= M_PI / 2. && cam->direction <= (3. * M_PI) / 2.)
+				cam->pos.x -= VEL * cos(mes_ang(cam->direction));
+			else
+				cam->pos.x += VEL * cos(mes_ang(cam->direction));
 		}
 		if (key == DOWN)
 		{
 			ft_putendl("down : ");
-			wolf->vel = -3;
+			if (cam->direction >= 0. && cam->direction <= M_PI)
+				cam->pos.y -= -VEL * sin(mes_ang(cam->direction));
+			else
+				cam->pos.y += -VEL * sin(mes_ang(cam->direction));
+			if (cam->direction >= M_PI / 2. && cam->direction <= (3. * M_PI) / 2.)
+				cam->pos.x -= -VEL * cos(mes_ang(cam->direction));
+			else
+				cam->pos.x += -VEL * cos(mes_ang(cam->direction));
 		}
 		wolf->key = key;
 //		print_map(wolf->map);
@@ -106,16 +120,7 @@ int		loop_hook(void *param)
 //		ft_putendl("###           ###");
 //		print_map(wolf->map);
 //		ft_putendl("###           ###");
-	if (wolf->key != DOWN && wolf->key != UP)
-		wolf->vel = 0;
-		if (wolf->cam->direction > M_PI / 2. && wolf->cam->direction < (3. * M_PI) / 2.)
-			wolf->cam->pos.x -= wolf->vel;
-		else
-			wolf->cam->pos.x += wolf->vel;
-		if (wolf->cam->direction > 0. && wolf->cam->direction < M_PI)
-			wolf->cam->pos.y -= wolf->vel;
-		else
-			wolf->cam->pos.y += wolf->vel;
+
 		(wolf->map)[wolf->cam->pos.y / WALL_H][wolf->cam->pos.x / WALL_W] = VOID;
 
 //		print_map(wolf->map);
@@ -164,13 +169,14 @@ int		main(int ac, char **av)
 	wolf.env = &env;
 	wolf.map = map;
 	wolf.key = 0;
+	wolf.vel = VEL;
 	mlx_do_key_autorepeaton(wolf.env->mlx);
 //	mlx_put_image_to_window(env.mlx, env.win, env.img, 0, 0);
 	if (ac)
 	{
 		av = av;
 //	mlx_expose_hook(env.win, expose_hook, &env);
-//		mlx_key_hook(env.win, key_hook, &wolf);
+//	mlx_key_hook(env.win, key_hook, &wolf);
 		mlx_hook(env.win, KeyPress, KeyPressMask, key_hook, &wolf);
 		mlx_loop_hook(env.mlx, loop_hook, &wolf);
 		mlx_loop(env.mlx);
