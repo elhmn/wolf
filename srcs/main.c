@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 00:03:19 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 00:16:55 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** 	A Revoir et a modifier ::
 **
 **		1- Amelioration du de placement.
-**		2- Affiner le tracer des surfaces.
+**		2- Affiner le trace des surfaces.
 **		3- Coloration en fonction de l'orientation
 **		4- Diminution de la luminosite en fonction de la distance
 **		5- Effect de reflection
