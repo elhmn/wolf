@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 21:54:31 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 00:02:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # define	WALL_W		192
 # define	MAP_H		10
 # define	MAP_W		10
-# define	START_DIR	0. //M_PI // 2. //M_PI//(3 * M_PI) / 2.
+# define	START_DIR	0.
 # define	HEIGH		480
 # define	WIDTH		768
-# define	VEL			20
+# define	VEL_V		20
+# define	VEL_H		0.1
 
 # define	UP			65362
 # define	DOWN		65364
@@ -90,7 +91,7 @@ typedef struct		s_ray
 ** s_cam		==> structure of camera
 ** direction 	==> verteur directeur de la camera
 ** champs 		==> champs visuel de la camera
-** pos 			==> position de la camera sur la map 
+** pos 			==> position de la camera sur la map
 ** dist_proj 	==> distance de projection
 ** h_cam		==> hauteur de la camera
 */
@@ -111,7 +112,7 @@ typedef struct			s_cam
 ** s_win		==> structure de l'ecran
 ** h 			==> hauteur de l'ecran
 ** w 			==> largeur de l'ecran
-** center		==> postion du centre de l ecran 
+** center		==> postion du centre de l ecran
 ** dist_proj 	==> distance de projection
 */
 
@@ -128,7 +129,7 @@ typedef struct		s_screen
 ** w 			==> largeur objet
 ** type			==> type de l objet (bonus)
 ** text 		==> texture de l objet
-** color		==> coleur de l'objet (opt) 
+** color		==> coleur de l'objet (opt)
 */
 
 typedef struct		s_obj
@@ -163,28 +164,27 @@ typedef	struct	s_wolf
 	t_cam		*cam;
 	t_env		*env;
 	char		**map;
-	t_uint		key;
-	t_uint		vel;
+	t_obj		*wall;
 }				t_wolf;
 
 /*
 ** init_var_01.c
 */
 
-void	new_lay(t_env *env, t_lay *lay, t_uint depht);
-void	init_cam(t_cam *cam);
-void	close_mlx(t_env *env);
-void	init_cam(t_cam *cam);
-void	init_env(t_env *env);
-void	init_screen(t_screen *screen);
+void		new_lay(t_env *env, t_lay *lay, t_uint depht);
+void		close_mlx(t_env *env);
+t_cam		*init_cam(t_cam *cam);
+t_env		*init_env(t_env *env);
+t_screen	*init_screen(t_screen *screen);
 
 /*
 ** init_var_02.c
 */
 
-void	init_wall(t_obj *wall);
+t_obj	*init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
-void	init_color(t_color	*color);
+void	init_color(t_color *color);
+t_wolf	*init_wolf(t_wolf *wolf);
 
 /*
 ** debug_01.c
@@ -220,5 +220,20 @@ float	mes_ang(float ang);
 
 void	draw(t_env *env, t_cam *cam);
 void	draw_img(t_env *env, t_cam *cam);
+
+/*
+** get_map.c + fonction a coder :: ........................
+*/
+
+char	**get_map(void);
+void	print_map(char **map);
+
+/*
+** event_handle.c
+*/
+
+int		loop_hook(void *param);
+int		expose_hook(void *param);
+int		key_hook(int key, void *param);
 
 #endif
