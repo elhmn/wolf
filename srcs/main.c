@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 22:48:54 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 01:14:52 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ int		key_hook(int key, void *param)
 		{
 			ft_putendl("left : ");
 			cam->direction += 0.1;
-			if (cam->direction + (M_PI / 6.) >= 2. * M_PI)
-				cam->direction = M_PI / 6.;
+			if (cam->direction >= 2. * M_PI)
+				cam->direction = mes_princ(cam->direction);
 		}
 		if (key == RIGHT)
 		{
 			ft_putendl("right : ");
 			cam->direction -= 0.1;
-			if (cam->direction - (M_PI / 6.) <= 0.)
-				cam->direction = 2. * M_PI - (M_PI / 6.);
+			if (cam->direction < 0.)
+				cam->direction = mes_princ(cam->direction);
 		}
 		if (key == UP)
 		{
@@ -65,7 +65,6 @@ int		key_hook(int key, void *param)
 			ft_putendl("down : ");
 			cam->pos.x -= 5;
 		}
-//		print_cam(cam);
 		print_map(wolf->map);
 		raycaster(wolf->env, wolf->cam, wolf->map);
 	}
@@ -118,13 +117,13 @@ int		main(int ac, char **av)
 		map[i] = ft_strnew(11);
 	ft_strcpy(map[0], "1111111111");
 	ft_strcpy(map[1], "1000000001");
-	ft_strcpy(map[2], "1001000011");
+	ft_strcpy(map[2], "1010000011");
 	ft_strcpy(map[3], "1000000111");
-	ft_strcpy(map[4], "1000100011");
-	ft_strcpy(map[5], "1000100001");
-	ft_strcpy(map[6], "1000000011");
+	ft_strcpy(map[4], "1010000011");
+	ft_strcpy(map[5], "1000000001");
+	ft_strcpy(map[6], "1010000011");
 	ft_strcpy(map[7], "1000000001");
-	ft_strcpy(map[8], "1000000001");
+	ft_strcpy(map[8], "1000001001");
 	ft_strcpy(map[9], "1000001001");
 	ft_strcpy(map[10], "1111111111");
 

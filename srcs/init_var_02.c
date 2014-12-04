@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/11/10 20:33:48 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 00:53:35 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_ray(t_ray *ray, float dir)
 {
 	ray->len = 0;
 	ray->v_len = 0;
-	ray->direction = (dir >= 2. * M_PI) ? dir / (2. * M_PI) : dir;
+	ray->direction = dir;
 }
 
 void	init_wall(t_obj *wall)

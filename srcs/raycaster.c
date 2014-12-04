@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/03 22:54:10 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/04 01:14:59 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 #include <mlx.h>
 #include "libft.h"
 #include "check_errors.h"
-#include <stdio.h> /*###########*/
+
+float	mes_princ(float ang)
+{
+	if (ang <= 0.)
+		return ((2. * M_PI) - ang);
+	else if (ang >= 2. * M_PI)
+		return (ang - (2. * M_PI));
+	return (ang);
+}
 
 static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
 {
@@ -48,7 +56,7 @@ void		raycaster(t_env *env, t_cam *cam, char **map)
 	init_ray(&ray, ang_strt);
 	while (ang_strt >= ang_end)
 	{
-		init_ray(&ray, ang_strt);
+		init_ray(&ray, mes_princ(ang_strt));
 		get_vlen(cam, &ray, map);
 		print_ray(&ray);
 		print_cam(cam);
