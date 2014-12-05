@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 00:02:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 07:42:20 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@
 # define	START_DIR	0.
 # define	HEIGH		480
 # define	WIDTH		768
-# define	VEL_V		20
-# define	VEL_H		0.1
+# define	VEL_V		10
 
 # define	UP			65362
 # define	DOWN		65364
@@ -35,6 +34,10 @@
 # define	DEG(x)		(x * 180.0) / M_PI
 # define	RAD(x)		(x * M_PI) / 180.0
 # define	ABS(x)		(x < 0) ? -x : x
+
+# define	MASK_R		0xFF0000
+# define	MASK_G		0x00FF00
+# define	MASK_B		0x0000FF
 
 
 typedef int	t_uint;
@@ -147,9 +150,6 @@ typedef struct		s_obj
 
 typedef struct	s_color
 {
-	int		mask_r;
-	int		mask_g;
-	int		mask_b;
 	int		alpha;
 	int		color;
 }				t_color;
@@ -165,6 +165,13 @@ typedef	struct	s_wolf
 	t_env		*env;
 	char		**map;
 	t_obj		*wall;
+	float		vel_h;
+	float		vel_v;
+	int			vel_h_bool;
+	int			vel_v_bool;
+	int			sky_col;
+	int			gd_col;
+	int			wall_col;
 }				t_wolf;
 
 /*
@@ -234,6 +241,7 @@ void	print_map(char **map);
 
 int		loop_hook(void *param);
 int		expose_hook(void *param);
-int		key_hook(int key, void *param);
+int		keypress_hook(int key, void *param);
+int		keyrelease_hook(int key, void *param);
 
 #endif
