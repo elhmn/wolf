@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 08:19:54 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:46:46 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ typedef struct		s_ray
 {
 	float			len;
 	float			v_len;
+	int				color_h;
+	int				color_w;
 	float			direction;
 }					t_ray;
 
