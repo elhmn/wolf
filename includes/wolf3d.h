@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 15:20:07 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 17:49:27 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@
 # define	MASK_G		0x00FF00
 # define	MASK_B		0x0000FF
 
-# define	COL_N		0xE89B18
+# define	COL_N		0xE37023//0xE89B18
 # define	COL_S		0xB24300//0xE83718
-# define	COL_E		0xE37023
+# define	COL_E		0xE89B18
 # define	COL_O		0xFFD21B
 # define	COL_SKY		0xFFD21B
 # define	COL_GD		0x007482
@@ -160,6 +160,9 @@ typedef struct	s_color
 {
 	int		alpha;
 	int		color;
+	int		r;
+	int		g;
+	int		b;
 }				t_color;
 
 /*
@@ -177,6 +180,9 @@ typedef	struct	s_wolf
 	float		vel_v;
 	int			vel_h_bool;
 	int			vel_v_bool;
+	int			shad;
+	int			i_shad;
+	int			i_light;
 	t_color		*col_sky;
 	t_color		*col_gd;
 	t_color		*col_wl;
@@ -199,6 +205,7 @@ t_screen	*init_screen(t_screen *screen);
 t_obj	*init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
 t_color	*init_color(t_color *color, int col);
+void	set_color(t_color *col);
 t_wolf	*init_wolf(t_wolf *wolf);
 
 /*
@@ -216,6 +223,7 @@ void	print_screen(t_screen *screen);
 
 void	raycaster(t_wolf *wolf, t_cam *cam, char **map);
 float	mes_princ(float ang);
+void		darkness(t_wolf *wolf);
 
 /*
 ** ray_len.c

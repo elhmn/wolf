@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:20:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 14:44:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 15:51:18 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w)
 		pos->x = (cam->pos.x + w) / WALL_W;
 		ray->col_v = COL_E;
 	}
-	if (ray->direction >= 0. && ray->direction <= M_PI)
+	if (ray->direction > 0. && ray->direction < M_PI)
 	{
 		if (((int)(cam->pos.y - h) % WALL_H) == 0)
 			pos->y = -1 + (cam->pos.y - h) / WALL_H;

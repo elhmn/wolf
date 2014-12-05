@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 15:21:47 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 18:02:29 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,21 @@ static void	get_vlen(t_cam *cam, t_ray *ray, char **map, t_wolf *wolf)
 	}
 }
 
+void		darkness(t_wolf *wolf)
+{
+	wolf->col_sky->r -= wolf->i_light;
+	wolf->col_sky->g -= wolf->i_light;
+	wolf->col_sky->b -= wolf->i_light;
+
+	wolf->col_wl->r -= wolf->i_light;
+	wolf->col_wl->g -= wolf->i_light;
+	wolf->col_wl->b -= wolf->i_light;
+
+	wolf->col_gd->r -= wolf->i_light;
+	wolf->col_gd->g -= wolf->i_light;
+	wolf->col_gd->b -= wolf->i_light;
+}
+
 void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 {
 	float		ang_strt;
@@ -68,6 +83,8 @@ void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 		check_errors(NUL, "wolf->env || cam", "raycaster.c");
 	cam->i = 0;
 	wolf->env->img = mlx_new_image(wolf->env->mlx, WIDTH, HEIGH);
+	wolf->i_light = 0;
+	wolf->i_shad = 0;
 	ang_strt = cam->direction + (cam->champs / 2.0);
 	ang_end = cam->direction - (cam->champs / 2.0);
 	inc = ((float)cam->champs / (float)WIDTH);
@@ -79,8 +96,15 @@ void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
 		if (cam->virtual_h > HEIGH)
 			cam->virtual_h = HEIGH;
+		set_color(wolf->col_sky);
+		set_color(wolf->col_wl);
+		set_color(wolf->col_gd);
+		if (!(wolf->i_shad % wolf->shad) && wolf->i_shad)
+			(wolf->i_light)++;	
+		wolf->col_wl->color -= (cam->virtual_h / 256);
 		draw_img(wolf, cam);
 		ang_strt -= inc;
+		(wolf->i_shad)++;
 	}
 	mlx_put_image_to_window(wolf->env->mlx, wolf->env->win, wolf->env->img, 0, 0);
 	mlx_destroy_image(wolf->env->mlx, wolf->env->img);
