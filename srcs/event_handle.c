@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:31:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 02:21:58 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:13:36 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int		loop_hook(void *param)
 		x =	wolf->cam->pos.x / WALL_W;
 		y = wolf->cam->pos.y / WALL_H;
 		(wolf->map)[y][x] = VOID;
-		raycaster(wolf->env, wolf->cam, wolf->map);
+		raycaster(wolf,  wolf->cam, wolf->map);
 	}
 	return (0);
 }

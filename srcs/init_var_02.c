@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 07:43:18 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:28:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ t_wolf	*init_wolf(t_wolf *wolf)
 	wolf->vel_v = 0;
 	wolf->vel_v_bool = 0;
 	wolf->vel_h_bool = 0;
+	wolf->col_sky = init_color(NULL, 0x00FCFF); 
+	wolf->col_gd = init_color(NULL, 0x007482); 
+	wolf->col_wl = init_color(NULL, 0XFF7019); 
 	return (wolf);
 }
 
@@ -51,11 +54,12 @@ t_obj	*init_wall(t_obj *wall)
 	return (wall);
 }
 
-void	init_color(t_color	*color)
+t_color	*init_color(t_color	*color, int col)
 {
-	if (color)
-	{
-		color->color = 0x0000FF;
-		color->alpha = 0;
-	}
+	if (!color)
+		if (!(color = (t_color*)malloc(sizeof(t_color))))
+			check_errors(MALLOC, "color", "init_var_02.c");
+	color->color = col;
+	color->alpha = 0;
+	return (color);
 }

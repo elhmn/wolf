@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 00:00:47 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:12:44 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
 		ray->len = (len_x <= len_y) ? len_x : len_y;
 }
 
-void		raycaster(t_env *env, t_cam *cam, char **map)
+void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 {
 	float		ang_strt;
 	float		ang_end;
 	float		inc;
 	t_ray		ray;
 
-	if (!env || !cam)
-		check_errors(NUL, "env || cam", "raycaster.c");
+	if (!wolf->env || !cam)
+		check_errors(NUL, "wolf->env || cam", "raycaster.c");
 	cam->i = 0;
-	env->img = mlx_new_image(env->mlx, WIDTH, HEIGH);
+	wolf->env->img = mlx_new_image(wolf->env->mlx, WIDTH, HEIGH);
 	ang_strt = cam->direction + (cam->champs / 2.0);
 	ang_end = cam->direction - (cam->champs / 2.0);
 	inc = ((float)cam->champs / (float)WIDTH);
@@ -62,9 +62,9 @@ void		raycaster(t_env *env, t_cam *cam, char **map)
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
 		if (cam->virtual_h > HEIGH)
 			cam->virtual_h = HEIGH;
-		draw_img(env, cam);
+		draw_img(wolf, cam);
 		ang_strt -= inc;
 	}
-	mlx_put_image_to_window(env->mlx, env->win, env->img, 0, 0);
-	mlx_destroy_image(env->mlx, env->img);
+	mlx_put_image_to_window(wolf->env->mlx, wolf->env->win, wolf->env->img, 0, 0);
+	mlx_destroy_image(wolf->env->mlx, wolf->env->img);
 }

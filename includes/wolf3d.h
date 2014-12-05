@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 07:42:20 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:19:54 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,9 @@ typedef	struct	s_wolf
 	float		vel_v;
 	int			vel_h_bool;
 	int			vel_v_bool;
-	int			sky_col;
-	int			gd_col;
-	int			wall_col;
+	t_color		*col_sky;
+	t_color		*col_gd;
+	t_color		*col_wl;
 }				t_wolf;
 
 /*
@@ -190,7 +190,7 @@ t_screen	*init_screen(t_screen *screen);
 
 t_obj	*init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
-void	init_color(t_color *color);
+t_color	*init_color(t_color *color, int col);
 t_wolf	*init_wolf(t_wolf *wolf);
 
 /*
@@ -206,7 +206,7 @@ void	print_screen(t_screen *screen);
 ** raycaster.c
 */
 
-void	raycaster(t_env *env, t_cam *cam, char **map);
+void	raycaster(t_wolf *wolf, t_cam *cam, char **map);
 float	mes_princ(float ang);
 
 /*
@@ -226,7 +226,7 @@ float	mes_ang(float ang);
 //void	pixel_put_img(void *img, int x, int y, t_color *col, t_lay lay);
 
 void	draw(t_env *env, t_cam *cam);
-void	draw_img(t_env *env, t_cam *cam);
+void	draw_img(t_wolf *wolf, t_cam *cam);
 
 /*
 ** get_map.c + fonction a coder :: ........................

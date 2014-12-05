@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:24:59 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 07:51:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 08:23:22 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include "check_errors.h"
 #include <mlx.h>
 
+/*
+** set pixel_put_img a 4 parametres
+*/
 
 static void	pixel_put_img(char *image, int x, int y, t_color *col, t_lay lay)
 {
@@ -43,34 +46,26 @@ static void	pixel_put_img(char *image, int x, int y, t_color *col, t_lay lay)
 	}
 }
 
-
-void	draw_img(t_env *env, t_cam *cam)
+void		draw_img(t_wolf *wolf, t_cam *cam)
 {
 	int			lim;
-	t_color		col;
-	t_color		col_lim;
 	t_lay		lay;
 	char		*image;
 
-	init_color(&col);
-	init_color(&col_lim);
-	col.color = 0xFF00FF;
-	col_lim.color = 0x00FFFF;
 	cam->j = 0;
 	lim = (HEIGH - (t_uint)cam->virtual_h) / 2;
-	image = (char*)env->img;
-	image = mlx_get_data_addr(env->img, &(lay.bpp), &(lay.line), &(lay.endian));
+	image = (char*)wolf->env->img;
+	image = mlx_get_data_addr(wolf->env->img, &(lay.bpp), &(lay.line), &(lay.endian));
 	while (cam->j < lim)
-		pixel_put_img(image, cam->i, (cam->j)++, &col_lim, lay);
+		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_sky, lay);
 	while (cam->j < (t_uint)((float)lim + cam->virtual_h))
-		pixel_put_img(image, cam->i, (cam->j)++, &col, lay);
+		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_wl, lay);
 	while (cam->j < HEIGH)
-		pixel_put_img(image, cam->i, (cam->j)++, &col_lim, lay);
+		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_gd, lay);
 	(cam->i) += 4;
 }
 
-
-void	draw(t_env *env, t_cam *cam)
+void		draw(t_env *env, t_cam *cam)
 {
 	int		lim;
 	
@@ -84,4 +79,3 @@ void	draw(t_env *env, t_cam *cam)
 		mlx_pixel_put(env->mlx, env->win, cam->i, (cam->j)++, 0x00FFFF);
 	(cam->i)++;
 }
-
