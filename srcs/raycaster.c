@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 08:12:44 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 15:21:47 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float		mes_princ(float ang)
 	return (ang);
 }
 
-static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
+static void	get_vlen(t_cam *cam, t_ray *ray, char **map, t_wolf *wolf)
 {
 	float	len_x;
 	float	len_y;
@@ -33,11 +33,28 @@ static void	get_vlen(t_cam *cam, t_ray *ray, char **map)
 	len_x = inter_hor(cam, ray, map);
 	len_y = inter_vert(cam, ray, map);
 	if (len_x == 0 && len_y != 0)
+	{
 		ray->len = len_y;
+		wolf->col_wl->color = ray->col_v;
+	}
 	else if (len_y == 0 && len_x != 0)
+	{
 		ray->len = len_x;
+		wolf->col_wl->color = ray->col_h;
+	}
 	else
-		ray->len = (len_x <= len_y) ? len_x : len_y;
+	{
+		if (len_x <= len_y)
+		{
+			ray->len = len_x;
+			wolf->col_wl->color = ray->col_h;
+		}
+		else
+		{
+			ray->len = len_y;
+			wolf->col_wl->color = ray->col_v;
+		}
+	}
 }
 
 void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
@@ -57,7 +74,7 @@ void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 	while (ang_strt >= ang_end)
 	{
 		init_ray(&ray, mes_princ(ang_strt));
-		get_vlen(cam, &ray, map);
+		get_vlen(cam, &ray, map, wolf);
 		ray.v_len = ray.len * (float)(cos(ang_strt - cam->direction));
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
 		if (cam->virtual_h > HEIGH)

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:20:51 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 02:25:41 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 15:23:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ char		**get_map(void)
 	while (++i < 11)
 		map[i] = ft_strnew(11);
 	ft_strcpy(map[0], "1111111111");
-	ft_strcpy(map[1], "1000000001");
+	ft_strcpy(map[1], "1000010001");
 	ft_strcpy(map[2], "1010000011");
-	ft_strcpy(map[3], "1000000111");
+	ft_strcpy(map[3], "1000000101");
 	ft_strcpy(map[4], "1010000011");
 	ft_strcpy(map[5], "1000000001");
-	ft_strcpy(map[6], "1010000011");
+	ft_strcpy(map[6], "1010010011");
 	ft_strcpy(map[7], "1000000001");
-	ft_strcpy(map[8], "1000001001");
+	ft_strcpy(map[8], "1001101001");
 	ft_strcpy(map[9], "1000001001");
 	ft_strcpy(map[10], "1111111111");
 

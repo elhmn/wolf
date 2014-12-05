@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 08:46:46 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 15:20:07 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@
 # define	MASK_G		0x00FF00
 # define	MASK_B		0x0000FF
 
+# define	COL_N		0xE89B18
+# define	COL_S		0xB24300//0xE83718
+# define	COL_E		0xE37023
+# define	COL_O		0xFFD21B
+# define	COL_SKY		0xFFD21B
+# define	COL_GD		0x007482
 
 typedef int	t_uint;
 
@@ -87,8 +93,8 @@ typedef struct		s_ray
 {
 	float			len;
 	float			v_len;
-	int				color_h;
-	int				color_w;
+	int				col_h;
+	int				col_v;
 	float			direction;
 }					t_ray;
 
