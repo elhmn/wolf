@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 23:19:41 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 07:43:18 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ t_wolf	*init_wolf(t_wolf *wolf)
 	wolf->screen = init_screen(NULL);
 	wolf->wall = init_wall(NULL);
 	wolf->map = get_map();
+	wolf->vel_h = 0;
+	wolf->vel_v = 0;
+	wolf->vel_v_bool = 0;
+	wolf->vel_h_bool = 0;
 	return (wolf);
 }
 
@@ -51,9 +55,7 @@ void	init_color(t_color	*color)
 {
 	if (color)
 	{
-		color->mask_r = 0xFF0000;
-		color->mask_g = 0x00FF00;
-		color->mask_b = 0x0000FF;
 		color->color = 0x0000FF;
+		color->alpha = 0;
 	}
 }

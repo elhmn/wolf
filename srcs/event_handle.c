@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:31:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 00:11:03 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/05 02:21:58 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "libft.h"
 #include "check_errors.h"
 
-static void		move_cam(int vel, t_cam *cam)
+static void		move_cam_v(int vel, t_cam *cam)
 {
 	if (cam->direction >= 0. && cam->direction <= M_PI)
 		cam->pos.y -= vel * sin(mes_ang(cam->direction));
@@ -31,7 +31,37 @@ static void		move_cam(int vel, t_cam *cam)
 		cam->pos.x += vel * cos(mes_ang(cam->direction));
 }
 
-int				key_hook(int key, void *param)
+static void		move_cam_h(float vel, t_cam *cam)
+{
+	cam->direction += vel;
+	if (vel < 0)
+	{
+		if (cam->direction < 0.)
+			cam->direction = mes_princ(cam->direction);
+	}
+	else
+	{
+		if (cam->direction > 2. * M_PI)
+			cam->direction = mes_princ(cam->direction);
+	}
+}
+
+int				keyrelease_hook(int key, void *param)
+{
+	t_wolf		*wolf;
+
+	if (param)
+	{
+		wolf = (t_wolf*)param;
+		if (key == LEFT || key == RIGHT)
+			wolf->vel_h_bool = 0;
+		if (key == UP || key == DOWN)
+			wolf->vel_v_bool = 0;
+	}
+	return (1);
+}
+
+int				keypress_hook(int key, void *param)
 {
 	t_wolf		*wolf;
 
@@ -40,22 +70,26 @@ int				key_hook(int key, void *param)
 		wolf = (t_wolf*)param;
 		if (key == ESCAPE)
 			exit(0);
-		if (key == LEFT)
+		if (key == LEFT && !wolf->vel_h_bool)
 		{
-			wolf->cam->direction += VEL_H;
-			if (wolf->cam->direction > 2. * M_PI)
-				wolf->cam->direction = mes_princ(wolf->cam->direction);
+			wolf->vel_h = 0.02;
+			wolf->vel_h_bool = 1;
 		}
-		if (key == RIGHT)
+		if (key == RIGHT && !wolf->vel_h_bool)
 		{
-			wolf->cam->direction -= VEL_H;
-			if (wolf->cam->direction < 0.)
-				wolf->cam->direction = mes_princ(wolf->cam->direction);
+			wolf->vel_h = -0.02;
+			wolf->vel_h_bool = 1;
 		}
-		if (key == UP)
-			move_cam(VEL_V, wolf->cam);
-		if (key == DOWN)
-			move_cam(-VEL_V, wolf->cam);
+		if (key == UP && !wolf->vel_v_bool)
+		{
+			wolf->vel_v = VEL_V;
+			wolf->vel_v_bool = 1;
+		}
+		if (key == DOWN && !wolf->vel_v_bool)
+		{
+			wolf->vel_v = -VEL_V;
+			wolf->vel_v_bool = 1;
+		}
 	}
 	return (1);
 }
@@ -78,6 +112,10 @@ int		loop_hook(void *param)
 	if (param)
 	{
 		wolf = (t_wolf*)param;
+		if (wolf->vel_v_bool)
+			move_cam_v(wolf->vel_v, wolf->cam);
+		if (wolf->vel_h_bool)
+			move_cam_h(wolf->vel_h, wolf->cam);
 		x =	wolf->cam->pos.x / WALL_W;
 		y = wolf->cam->pos.y / WALL_H;
 		(wolf->map)[y][x] = VOID;
