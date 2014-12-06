@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 08:26:04 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 11:41:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_wolf	*init_wolf(t_wolf *wolf)
 	wolf->col_gd = init_color(NULL, 0x007482); 
 	wolf->col_wl = init_color(NULL, COL_N);
 	wolf->shad = ((WIDTH / 2) / 256);
-	printf("shad = [%d]\n", wolf->shad);
 	wolf->i_shad = 0;
 	wolf->i_light = 0;
 	return (wolf);

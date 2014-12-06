@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 10:04:43 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 11:49:39 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # define	CHAMPS		M_PI / 3.0
 # define	WALL_H		192
 # define	WALL_W		192
-# define	MAP_H		10
-# define	MAP_W		10
+# define	MAP_H		42
+# define	MAP_W		40
 # define	START_DIR	0.
 # define	HEIGH		480
 # define	WIDTH		768

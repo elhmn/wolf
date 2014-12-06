@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 10:11:23 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 11:41:13 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 		if (cam->virtual_h > HEIGH)
 			cam->virtual_h = HEIGH;
 		lost_l = (int)((G_LIGHT * (int)(cam->virtual_h)) / U_LONG);
-		printf("lost_l = [%d]\n", (unsigned int)lost_l);
 //		set_color(wolf->col_sky);
 		set_color(wolf->col_wl);
 		low_light(wolf->col_wl, (unsigned)lost_l, 1);
