@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 17:49:27 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 06:23:57 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ typedef struct		s_ray
 {
 	float			len;
 	float			v_len;
-	int				col_h;
-	int				col_v;
+	unsigned int	col_h;
+	unsigned int	col_v;
 	float			direction;
 }					t_ray;
 
@@ -156,14 +156,14 @@ typedef struct		s_obj
 **
 */
 
-typedef struct	s_color
+typedef struct			s_color
 {
-	int		alpha;
-	int		color;
-	int		r;
-	int		g;
-	int		b;
-}				t_color;
+	unsigned int	alpha;
+	unsigned int	color;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}						t_color;
 
 /*
 ** game
@@ -204,7 +204,7 @@ t_screen	*init_screen(t_screen *screen);
 
 t_obj	*init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
-t_color	*init_color(t_color *color, int col);
+t_color	*init_color(t_color *color, unsigned int col);
 void	set_color(t_color *col);
 t_wolf	*init_wolf(t_wolf *wolf);
 
