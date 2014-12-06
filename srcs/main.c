@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 06:19:58 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 11:51:45 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 **		1- Amelioration du de placement.									DONE
 **		2- Affiner le trace des surfaces.
 **		3- Coloration en fonction de l'orientation							DONE
-**		4- Diminution de la luminosite en fonction de la distance
+**		4- Diminution de la luminosite en fonction de la distance			DONE
 **		5- Effect de reflection
 **		6- gestion de l'expose et optimisation du trace
 **		7- collision mur != cam

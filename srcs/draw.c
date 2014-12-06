@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:24:59 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 11:20:21 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 12:09:47 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,17 @@ void		draw_img(t_wolf *wolf, t_cam *cam)
 	image = (char*)wolf->env->img;
 	image = mlx_get_data_addr(wolf->env->img, &(lay.bpp), &(lay.line), &(lay.endian));
 	while (cam->j < lim)
+	{
 		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_sky, lay);
+		low_light(wolf->col_sky, (unsigned int)1, 1);
+	}
 	while (cam->j < (t_uint)((float)lim + cam->virtual_h))
 		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_wl, lay);
 	while (cam->j < HEIGH)
+	{
 		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_gd, lay);
+		low_light(wolf->col_gd, (unsigned int)1, -1);
+	}
 	(cam->i) += 4;
 }
 

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 11:49:39 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 12:05:23 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define	COL_S		0xB24300//0xE83718
 # define	COL_E		0xE89B18
 # define	COL_O		0xFFD21B
-# define	COL_SKY		0xFFD21B
-# define	COL_GD		0x007482
+# define	COL_SKY		0x100AC4//0xFFD21B
+# define	COL_GD		0xD47408//0x100AC4//0x007482
 
 # define	U_LONG		5
 # define	G_LIGHT		1
