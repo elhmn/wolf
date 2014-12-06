@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 06:22:32 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 08:26:04 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,6 @@ t_obj	*init_wall(t_obj *wall)
 	wall->type = WALL;
 	wall->text = 0;
 	return (wall);
-}
-
-void	set_color(t_color *col)
-{
-	col->r = (col->color & MASK_R) >> (8 * 2);
-	col->g = (col->color & MASK_G) >> 8;
-	col->b = (col->color & MASK_B);
-	col->alpha = 0;
 }
 
 t_color	*init_color(t_color	*color, unsigned int col)

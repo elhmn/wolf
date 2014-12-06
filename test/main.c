@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/06 06:17:40 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 07:18:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 08:05:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,28 @@ void	print_color(t_color *color)
 	}
 }
 
-void	low_light(t_color *color, unsigned int inc)
+void	low_light(t_color *color, unsigned int inc, int sign)
 {
 	if (color)
 	{
-		if (color->r)
-			color->r += inc;
-		if (color->g)
-			color->g += inc;
-		if (color->b)
-			color->b += inc;
+		if (sign > 0)
+		{
+			if (color->r)
+				color->r += inc;
+			if (color->g)
+				color->g += inc;
+			if (color->b)
+				color->b += inc;
+		}
+		else
+		{
+			if (color->r)
+				color->r -= inc;
+			if (color->g)
+				color->g -= inc;
+			if (color->b)
+				color->b -= inc;
+		}
 		color->col = RGB_to_color(color->r, color->g, color->b);
 	}
 }
@@ -86,7 +98,7 @@ int		main(void)
 	int			i;
 	int			j;
 	t_color		*color;
-	int			inc;
+	int			sign;
 
 	i = 0;
 	mlx = mlx_init();
@@ -102,13 +114,13 @@ int		main(void)
 	while (i < WIDTH)
 	{
 		j = 0;
-		inc = -1;
+		sign = 1;
 		set_color(color, COL);
 		while (j < HEIGH)
 		{
-			low_light(color, inc);
+			low_light(color, 1, sign);
 			if (color->col == 0)
-				inc = 1;
+				sign = -1;
 			mlx_pixel_put(mlx, win, i, j, color->col);
 			j++;
 		}

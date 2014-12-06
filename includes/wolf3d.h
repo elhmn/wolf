@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 06:23:57 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/06 10:04:43 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@
 # define	COL_SKY		0xFFD21B
 # define	COL_GD		0x007482
 
+# define	U_LONG		5
+# define	G_LIGHT		1
+
 typedef int	t_uint;
 
 enum	e_obj
@@ -57,10 +60,10 @@ enum	e_obj
 
 
 /*
-** layer struct 
-** depht		==> layer depht
-** img			==>	img
-*/
+ ** layer struct 
+ ** depht		==> layer depht
+ ** img			==>	img
+ */
 
 typedef struct		s_lay
 {
@@ -78,7 +81,7 @@ typedef struct		s_pos
 }					t_pos;
 
 /*
-** environement variable
+ ** environement variable
 */
 
 typedef struct	s_env
@@ -99,12 +102,12 @@ typedef struct		s_ray
 }					t_ray;
 
 /*
-** s_cam		==> structure of camera
-** direction 	==> verteur directeur de la camera
-** champs 		==> champs visuel de la camera
-** pos 			==> position de la camera sur la map
-** dist_proj 	==> distance de projection
-** h_cam		==> hauteur de la camera
+ ** s_cam		==> structure of camera
+ ** direction 	==> verteur directeur de la camera
+ ** champs 		==> champs visuel de la camera
+ ** pos 			==> position de la camera sur la map
+ ** dist_proj 	==> distance de projection
+ ** h_cam		==> hauteur de la camera
 */
 
 typedef struct			s_cam
@@ -120,12 +123,12 @@ typedef struct			s_cam
 }						t_cam;
 
 /*
-** s_win		==> structure de l'ecran
-** h 			==> hauteur de l'ecran
-** w 			==> largeur de l'ecran
-** center		==> postion du centre de l ecran
-** dist_proj 	==> distance de projection
-*/
+ ** s_win		==> structure de l'ecran
+ ** h 			==> hauteur de l'ecran
+ ** w 			==> largeur de l'ecran
+ ** center		==> postion du centre de l ecran
+ ** dist_proj 	==> distance de projection
+ */
 
 typedef struct		s_screen
 {
@@ -135,12 +138,12 @@ typedef struct		s_screen
 }					t_screen;
 
 /*
-** s_obj		==> structure objet
-** h 			==> hauteur objet
-** w 			==> largeur objet
-** type			==> type de l objet (bonus)
-** text 		==> texture de l objet
-** color		==> coleur de l'objet (opt)
+ ** s_obj		==> structure objet
+ ** h 			==> hauteur objet
+ ** w 			==> largeur objet
+ ** type			==> type de l objet (bonus)
+ ** text 		==> texture de l objet
+ ** color		==> coleur de l'objet (opt)
 */
 
 typedef struct		s_obj
@@ -152,8 +155,8 @@ typedef struct		s_obj
 }					t_obj;
 
 /*
-** structure de stockage de couleur
-**
+ ** structure de stockage de couleur
+ **
 */
 
 typedef struct			s_color
@@ -166,8 +169,8 @@ typedef struct			s_color
 }						t_color;
 
 /*
-** game
-*/
+ ** game
+ */
 
 typedef	struct	s_wolf
 {
@@ -189,7 +192,7 @@ typedef	struct	s_wolf
 }				t_wolf;
 
 /*
-** init_var_01.c
+ ** init_var_01.c
 */
 
 void		new_lay(t_env *env, t_lay *lay, t_uint depht);
@@ -199,23 +202,31 @@ t_env		*init_env(t_env *env);
 t_screen	*init_screen(t_screen *screen);
 
 /*
-** init_var_02.c
+ ** init_var_02.c
 */
 
 t_obj	*init_wall(t_obj *wall);
 void	init_ray(t_ray *ray, float direction);
 t_color	*init_color(t_color *color, unsigned int col);
-void	set_color(t_color *col);
 t_wolf	*init_wolf(t_wolf *wolf);
 
 /*
-** debug_01.c
+ ** color.c
+*/
+
+void	set_color(t_color *col);
+unsigned int	RGB_to_color(unsigned int r, unsigned int g, unsigned int b);
+void	low_light(t_color *color, unsigned int inc, int sign);
+
+/*
+ ** debug_01.c
 */
 
 void	print_ray(t_ray *ray);
 void	print_obj(t_obj *obj);
 void	print_cam(t_cam *cam);
 void	print_screen(t_screen *screen);
+void	print_color(t_color *color);
 
 /*
 ** raycaster.c
@@ -226,8 +237,8 @@ float	mes_princ(float ang);
 void		darkness(t_wolf *wolf);
 
 /*
-** ray_len.c
-*/
+ ** ray_len.c
+ */
 
 float	inter_hor(t_cam *cam, t_ray *ray, char **map);
 float	inter_vert(t_cam *cam, t_ray *ray, char **map);
@@ -236,8 +247,8 @@ void	map_pos_vert(t_cam *cam, t_ray *ray, t_pos *pos, t_uint w);
 float	mes_ang(float ang);
 
 /*
-** draw.c
-*/
+ ** draw.c
+ */
 
 //void	pixel_put_img(void *img, int x, int y, t_color *col, t_lay lay);
 
@@ -245,15 +256,15 @@ void	draw(t_env *env, t_cam *cam);
 void	draw_img(t_wolf *wolf, t_cam *cam);
 
 /*
-** get_map.c + fonction a coder :: ........................
-*/
+ ** get_map.c + fonction a coder :: ........................
+ */
 
 char	**get_map(void);
 void	print_map(char **map);
 
 /*
-** event_handle.c
-*/
+ ** event_handle.c
+ */
 
 int		loop_hook(void *param);
 int		expose_hook(void *param);
