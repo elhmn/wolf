@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 08:09:48 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 12:06:02 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/07 22:33:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ void		raycaster(t_wolf *wolf, t_cam *cam, char **map)
 		cam->virtual_h = (float)(cam->dist_proj * (HEIGH / 2)) / ray.v_len;
 		if (cam->virtual_h > HEIGH)
 			cam->virtual_h = HEIGH;
-		lost_l = (int)((G_LIGHT * (int)(cam->virtual_h)) / U_LONG);
+		lost_l = (int)((G_LIGHT * (int)(ray.v_len)) / U_LONG);
 //		set_color(wolf->col_sky);
 		set_color(wolf->col_wl);
-		low_light(wolf->col_wl, (unsigned)lost_l, 1);
+		low_light(wolf->col_wl, (unsigned)lost_l, -1);
 		wolf->col_gd->color = COL_GD;
 		set_color(wolf->col_gd);
 		wolf->col_sky->color = COL_SKY;
 		set_color(wolf->col_sky);
 //		wolf->col_wl->color -= (cam->virtual_h / 256);
-		draw_img(wolf, cam);
+		draw_img(wolf, cam, ray);
 		ang_strt -= inc;
 		//(wolf->i_shad)++;
 	}

@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 20:24:59 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 12:09:47 by bmbarga          ###   ########.fr       */
+/*   Updated: 2014/12/07 22:41:49 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,32 @@ static void	pixel_put_img(char *image, int x, int y, t_color *col, t_lay lay)
 	}
 }
 
-void		draw_img(t_wolf *wolf, t_cam *cam)
+void		draw_img(t_wolf *wolf, t_cam *cam, t_ray ray)
 {
 	int			lim;
 	t_lay		lay;
 	char		*image;
+//	int			lost_l;
 
-	cam->j = 0;
 	lim = (HEIGH - (t_uint)cam->virtual_h) / 2;
+	cam->j = lim;
 	image = (char*)wolf->env->img;
 	image = mlx_get_data_addr(wolf->env->img, &(lay.bpp), &(lay.line), &(lay.endian));
-	while (cam->j < lim)
+	ray = ray;
+//	lost_l = (int)((G_LIGHT * (int)(ray.v_len)) / U_LONG);
+//	low_light(wolf->col_gd, (unsigned int)lost_l, -1);
+	while (cam->j)
 	{
-		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_sky, lay);
+		pixel_put_img(image, cam->i, (cam->j)--, wolf->col_sky, lay);
 		low_light(wolf->col_sky, (unsigned int)1, 1);
 	}
+	cam->j = lim;
 	while (cam->j < (t_uint)((float)lim + cam->virtual_h))
 		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_wl, lay);
 	while (cam->j < HEIGH)
 	{
 		pixel_put_img(image, cam->i, (cam->j)++, wolf->col_gd, lay);
-		low_light(wolf->col_gd, (unsigned int)1, -1);
+		low_light(wolf->col_gd, (unsigned int)1, 1);
 	}
 	(cam->i) += 4;
 }
