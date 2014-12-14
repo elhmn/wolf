@@ -36,16 +36,20 @@ LIBS = -lmlx -lX11 -lXext -lm -lft
 
 INCLUDES = -I includes/ -I /usr/X11/include/X11
 
+INCHOME = -I includes/ -I /usr/include/X11
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C libft/
 	$(CC) $(FLAGS) $(LIB42) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
 
-home: $(OBJS)
+home: obj
 	make -C libft/
 	$(CC) $(FLAGS) $(LIBHOME) $(LIBFT) -o $(NAME) $(OBJS) $(LIBS)
 	
+obj: $(SRCS)
+	$(CC) $(FLAGS) $(INCHOME) -c $(SRCS) 
 
 $(OBJS): $(SRCS) 
 	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) 
