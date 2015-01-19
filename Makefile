@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2014/12/06 07:46:08 by bmbarga          ###   ########.fr        #
+#    Updated: 2015/01/19 23:33:10 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,12 @@ SRC = main.c check_errors.c fun_err_01.c init_var_01.c init_var_02.c \
 
 SRCDIR = ./srcs/
 
-OBJS = $(SRC:.c=.o)
+OBJDIR = ./objs/
+
+OBJ = $(SRC:.c=.o)
 
 SRCS = $(addprefix $(SRCDIR), $(SRC))
+OBJS = $(addprefix $(OBJDIR), $(OBJ))
 
 CC = gcc
 
@@ -52,7 +55,8 @@ obj: $(SRCS)
 	$(CC) $(FLAGS) $(INCHOME) -c $(SRCS) 
 
 $(OBJS): $(SRCS) 
-	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS) 
+	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)
+	mv $(OBJ) $(OBJDIR)
 
 clean:
 	rm -rf $(OBJS)
