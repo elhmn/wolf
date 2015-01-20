@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:49:38 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/06 11:41:01 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 01:33:31 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 #include <stdlib.h>
 #include "libft.h"
 #include "check_errors.h"
-#include <stdio.h>
 
 t_wolf	*init_wolf(t_wolf *wolf)
 {
 	if (!wolf)
-		if (!(malloc(sizeof(t_wolf))))
+		if (!(wolf = (t_wolf*)malloc(sizeof(t_wolf))))
 			check_errors(MALLOC, "wolf", "init_var_02.c");
 	wolf->env = init_env(NULL);
 	wolf->cam = init_cam(NULL);
@@ -30,8 +29,8 @@ t_wolf	*init_wolf(t_wolf *wolf)
 	wolf->vel_v = 0;
 	wolf->vel_v_bool = 0;
 	wolf->vel_h_bool = 0;
-	wolf->col_sky = init_color(NULL, 0x00FCFF); 
-	wolf->col_gd = init_color(NULL, 0x007482); 
+	wolf->col_sky = init_color(NULL, 0x00FCFF);
+	wolf->col_gd = init_color(NULL, 0x007482);
 	wolf->col_wl = init_color(NULL, COL_N);
 	wolf->shad = ((WIDTH / 2) / 256);
 	wolf->i_shad = 0;
@@ -58,7 +57,7 @@ t_obj	*init_wall(t_obj *wall)
 	return (wall);
 }
 
-t_color	*init_color(t_color	*color, unsigned int col)
+t_color	*init_color(t_color *color, unsigned int col)
 {
 	if (!color)
 		if (!(color = (t_color*)malloc(sizeof(t_color))))

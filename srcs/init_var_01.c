@@ -6,21 +6,20 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 22:48:53 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/04 23:10:21 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 01:48:30 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "wolf3d.h"
 #include "check_errors.h"
 
-t_env	*init_env(t_env *env)
+t_env		*init_env(t_env *env)
 {
 	if (!env)
 		if (!(env = malloc(sizeof(t_env))))
-			check_errors(MALLOC, "env", "init_wolf_war.c");	
-
+			check_errors(MALLOC, "env", "init_wolf_war.c");
 	env->win = NULL;
 	env->mlx = NULL;
 	if (!(env->mlx = mlx_init()))
@@ -30,12 +29,12 @@ t_env	*init_env(t_env *env)
 	return (env);
 }
 
-void	close_mlx(t_env *env)
+void		close_mlx(t_env *env)
 {
-	mlx_destroy_window(env->mlx, env->win);	
+	mlx_destroy_window(env->mlx, env->win);
 }
 
-void	new_lay(t_env *env, t_lay *lay, t_uint depht)
+void		new_lay(t_env *env, t_lay *lay, t_uint depht)
 {
 	if (!lay)
 		if (!(lay = (t_lay*)malloc(sizeof(lay))))
@@ -48,7 +47,7 @@ void	new_lay(t_env *env, t_lay *lay, t_uint depht)
 	}
 }
 
-t_cam	*init_cam(t_cam *cam)
+t_cam		*init_cam(t_cam *cam)
 {
 	float	tan;
 
@@ -59,8 +58,8 @@ t_cam	*init_cam(t_cam *cam)
 	cam->direction = START_DIR;
 	cam->i = 0;
 	cam->j = 0;
-	cam->pos.x = (WALL_W * 5) + (WALL_W / 2);
-	cam->pos.y = (WALL_H * 4) + (WALL_H / 2);
+	cam->pos.x = ((t_uint)WALL_W * (t_uint)5) + ((t_uint)WALL_W / (t_uint)2);
+	cam->pos.y = ((t_uint)WALL_H * (t_uint)4) + ((t_uint)WALL_H / (t_uint)2);
 	tan = (float)((float)sin((CHAMPS / 2.0)) / (float)cos((CHAMPS / 2.0)));
 	cam->dist_proj = (t_uint)((float)(WIDTH / 2) / tan);
 	cam->h_cam = WALL_H / 2;

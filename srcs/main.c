@@ -6,33 +6,17 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/08 10:06:26 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 01:52:56 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "X.h"
-#include <stdlib.h>
-#include <unistd.h>
 #include "wolf3d.h"
 #include "libft.h"
 #include "check_errors.h"
-
-/*
-** 	A Revoir et a modifier ::
-**
-**		0- Correction bug color mur mis cote a cote							En cours ...
-**		1- Amelioration du de placement.									DONE
-**		2- Affiner le trace des surfaces.									En cours ...
-**		3- Coloration en fonction de l'orientation							DONE
-**		4- Diminution de la luminosite en fonction de la distance			DONE
-**		5- Effect de reflection												DONE
-**		6- gestion de l'expose et optimisation du trace						En cours ...
-**		7- collision mur != cam												En cours ...
-**		8- UV-mapping Raycaster												En cours ...
-**		9- Editeur
-**		10-Lexer et Parseur de fichier
-*/
+#include "X.h"
+#include <mlx.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /*
 ** init_wolf
@@ -47,15 +31,11 @@ int		main(int ac, char **av)
 	{
 		av = av;
 		init_wolf(&wolf);
-		/*
-		mlx_expose_hook(env.win, expose_hook, &env);
-		*/
 		mlx_key_hook(wolf.env->win, keyrelease_hook, &wolf);
 		mlx_hook(wolf.env->win, KeyPress, KeyPressMask, keypress_hook, &wolf);
 		mlx_loop_hook(wolf.env->mlx, loop_hook, &wolf);
 		mlx_loop(wolf.env->mlx);
 	}
 	close_mlx(wolf.env);
-	/*free_wolf*/
 	return (0);
 }

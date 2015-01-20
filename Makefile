@@ -6,7 +6,7 @@
 #    By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 11:07:01 by bmbarga           #+#    #+#              #
-#    Updated: 2015/01/19 23:33:10 by bmbarga          ###   ########.fr        #
+#    Updated: 2015/01/20 01:19:43 by bmbarga          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = wolf3d
 
 SRC = main.c check_errors.c fun_err_01.c init_var_01.c init_var_02.c \
 	  debug_01.c raycaster.c ray_len.c draw.c get_map.c event_handle.c \
-	  color.c
+	  color.c event_handle_02.c
 
 SRCDIR = ./srcs/
 

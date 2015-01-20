@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/20 00:01:45 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 02:07:13 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define CHAMPS		M_PI / 3.0
 # define WALL_H		192
 # define WALL_W		192
-# define MAP_H		42
+# define MAP_H		12
 # define MAP_W		40
 # define START_DIR	0.
 # define HEIGH		480
@@ -186,6 +186,9 @@ typedef struct		s_wolf
 	t_color		*col_sky;
 	t_color		*col_gd;
 	t_color		*col_wl;
+	char		*img;
+	t_lay		lay;
+	t_ray		ray;
 }					t_wolf;
 
 /*
@@ -258,12 +261,17 @@ char				**get_map(void);
 void				print_map(char **map);
 
 /*
+** event_handle_02.c
+*/
+
+int					keypress_hook(int key, void *param);
+
+/*
 ** event_handle.c
 */
 
 int					loop_hook(void *param);
 int					expose_hook(void *param);
-int					keypress_hook(int key, void *param);
 int					keyrelease_hook(int key, void *param);
 
 #endif

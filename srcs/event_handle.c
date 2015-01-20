@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:31:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2014/12/05 08:13:36 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 01:16:28 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,39 +61,6 @@ int				keyrelease_hook(int key, void *param)
 	return (1);
 }
 
-int				keypress_hook(int key, void *param)
-{
-	t_wolf		*wolf;
-
-	if (param)
-	{
-		wolf = (t_wolf*)param;
-		if (key == ESCAPE)
-			exit(0);
-		if (key == LEFT && !wolf->vel_h_bool)
-		{
-			wolf->vel_h = 0.02;
-			wolf->vel_h_bool = 1;
-		}
-		if (key == RIGHT && !wolf->vel_h_bool)
-		{
-			wolf->vel_h = -0.02;
-			wolf->vel_h_bool = 1;
-		}
-		if (key == UP && !wolf->vel_v_bool)
-		{
-			wolf->vel_v = VEL_V;
-			wolf->vel_v_bool = 1;
-		}
-		if (key == DOWN && !wolf->vel_v_bool)
-		{
-			wolf->vel_v = -VEL_V;
-			wolf->vel_v_bool = 1;
-		}
-	}
-	return (1);
-}
-
 int				expose_hook(void *param)
 {
 	char	*tmp;
@@ -103,7 +70,7 @@ int				expose_hook(void *param)
 	return (0);
 }
 
-int		loop_hook(void *param)
+int				loop_hook(void *param)
 {
 	t_wolf	*wolf;
 	int		x;
@@ -116,10 +83,10 @@ int		loop_hook(void *param)
 			move_cam_v(wolf->vel_v, wolf->cam);
 		if (wolf->vel_h_bool)
 			move_cam_h(wolf->vel_h, wolf->cam);
-		x =	wolf->cam->pos.x / WALL_W;
+		x = wolf->cam->pos.x / WALL_W;
 		y = wolf->cam->pos.y / WALL_H;
 		(wolf->map)[y][x] = VOID;
-		raycaster(wolf,  wolf->cam, wolf->map);
+		raycaster(wolf, wolf->cam, wolf->map);
 	}
 	return (0);
 }
