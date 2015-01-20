@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:46:50 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/20 17:17:44 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 17:18:59 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 /*
 ** Bug a corriger :: 
-** 1- camera rentre dans les murs.
-** 2- frange forte entre les murs.
+** 1- frange forte entre les murs.
+** 2- camera rentre dans les murs.
 ** 3- ajouter une petite map.
 */
 
