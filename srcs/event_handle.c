@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:31:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/20 01:16:28 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/20 02:31:38 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,27 @@ int				loop_hook(void *param)
 	t_wolf	*wolf;
 	int		x;
 	int		y;
+	int		tmpx;
+	int		tmpy;
 
 	if (param)
 	{
 		wolf = (t_wolf*)param;
+		tmpx = wolf->cam->pos.x;
+		tmpy = wolf->cam->pos.y;
 		if (wolf->vel_v_bool)
 			move_cam_v(wolf->vel_v, wolf->cam);
 		if (wolf->vel_h_bool)
 			move_cam_h(wolf->vel_h, wolf->cam);
 		x = wolf->cam->pos.x / WALL_W;
 		y = wolf->cam->pos.y / WALL_H;
-		(wolf->map)[y][x] = VOID;
+		if (wolf->map[y][x] == WALL)
+		{
+			wolf->cam->pos.x = tmpx;
+			wolf->cam->pos.y = tmpy;
+		}
+		else
+			(wolf->map)[y][x] = VOID;
 		raycaster(wolf, wolf->cam, wolf->map);
 	}
 	return (0);
