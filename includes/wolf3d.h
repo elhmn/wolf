@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 17:08:49 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/20 02:25:00 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/21 04:48:03 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@
 # define MASK_R		0xFF0000
 # define MASK_G		0x00FF00
 # define MASK_B		0x0000FF
+
+/*
+** # define COL_N	0xFF0000
+** # define COL_S	0xFFFF00
+** # define COL_E	0x00FF00
+** # define COL_O	0x0000FF
+*/
 
 # define COL_N		0xE37023
 # define COL_S		0xB24300

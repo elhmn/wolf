@@ -6,7 +6,7 @@
 /*   By: bmbarga <bmbarga@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 23:31:32 by bmbarga           #+#    #+#             */
-/*   Updated: 2015/01/20 17:14:49 by bmbarga          ###   ########.fr       */
+/*   Updated: 2015/01/21 05:07:01 by bmbarga          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,29 +73,27 @@ int				expose_hook(void *param)
 int				loop_hook(void *param)
 {
 	t_wolf	*wolf;
-	int		x;
-	int		y;
-	int		tmpx;
-	int		tmpy;
+	t_pos	pos;
+	t_pos	tmp;
 
 	if (param)
 	{
 		wolf = (t_wolf*)param;
-		tmpx = wolf->cam->pos.x;
-		tmpy = wolf->cam->pos.y;
+		tmp.x = wolf->cam->pos.x;
+		tmp.y = wolf->cam->pos.y;
 		if (wolf->vel_v_bool)
 			move_cam_v(wolf->vel_v, wolf->cam);
 		if (wolf->vel_h_bool)
 			move_cam_h(wolf->vel_h, wolf->cam);
-		x = wolf->cam->pos.x / WALL_W;
-		y = wolf->cam->pos.y / WALL_H;
-		if (wolf->map[y][x] == WALL)
+		pos.x = wolf->cam->pos.x / WALL_W;
+		pos.y = wolf->cam->pos.y / WALL_H;
+		if (wolf->map[pos.y][pos.x] == WALL)
 		{
-			wolf->cam->pos.x = tmpx;
-			wolf->cam->pos.y = tmpy;
+			wolf->cam->pos.x = tmp.x;
+			wolf->cam->pos.y = tmp.y;
 		}
 		else
-			(wolf->map)[y][x] = VOID;
+			(wolf->map)[pos.y][pos.x] = VOID;
 		raycaster(wolf, wolf->cam, wolf->map);
 	}
 	return (0);
