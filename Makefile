@@ -53,16 +53,20 @@ home: obj
 	
 obj: $(SRCS)
 	$(CC) $(FLAGS) $(INCHOME) -c $(SRCS) 
+	mv $(OBJ) $(OBJDIR)
 
 $(OBJS): $(SRCS) 
 	$(CC) $(FLAGS) $(INCLUDES) -c $(SRCS)
 	mv $(OBJ) $(OBJDIR)
 
 clean:
+	make clean -C libft/
 	rm -rf $(OBJS)
+	rm -rf $(OBJ)
 	make clean -C ./libft/
 
 fclean: clean
+	make fclean -C libft/
 	rm -rf $(NAME)
 	make fclean -C ./libft/
 
